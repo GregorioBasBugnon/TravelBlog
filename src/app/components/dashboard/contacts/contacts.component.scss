@@ -1,0 +1,55 @@
+//Contacts
+
+.contact-status {
+  display: flex;
+  flex-direction: column;
+  padding: 5px 0;
+  border-bottom: 2px solid var(--border-color);
+  margin-bottom: 15px;
+}
+
+.contact-status:last-child {
+  border-bottom: unset;
+}
+
+.contact-activity {
+  display: flex;
+  align-items: center;
+  column-gap: 14px;
+}
+
+.contact-activity img {
+  max-width: 45px;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.contact-activity p {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  padding-right: 10px;
+}
+
+.contact-activity p span {
+  font-weight: 700;
+  color: var(--accent-color);
+  margin-left: 2px;
+  cursor: pointer;
+}
+
+.contact-activity p span:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--accent-color);
+  text-decoration-thickness: 1.5px;
+}
+
+.contact-status small {
+  font-size: 0.8rem;
+  opacity: 0.5;
+  margin-left: auto;
+}
+
+
+
+
