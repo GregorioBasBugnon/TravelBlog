@@ -124,9 +124,9 @@ color: #000;
 
 .icon-container {
   gap: 15px;
-  line-height: 65px;
   margin-left: 10px;
-
+  width: 60px;
+display: flex;
 }
 
 .user-info h4 {
@@ -160,6 +160,7 @@ color: #000;
   font-size: 1.25rem;
   color: var(--primary-color);
   user-select: none;
+
 }
 
 .notified {
@@ -189,10 +190,12 @@ color: #000;
   transform: translateY(2px);
   transition: all 0.2s linear;
   cursor: pointer;
+
 }
 
 .mode-icon i:hover {
   color: var(--primary-hover-color);
+  position: relative;
 }
 
 .hidden {
