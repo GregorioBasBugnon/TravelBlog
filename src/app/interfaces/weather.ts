@@ -20,6 +20,6 @@ export interface weather {
     };
     cloud_cover: number
   };
-  hourly?: string;
-  daily?: string
+  hourly?: any;
+  daily?: any
 }

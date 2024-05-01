@@ -1,7 +1,6 @@
 export const environmentCountries = {
   urlBase: `https://restcountries.com/v3.1/`,
   production: true
-  // Authorization: ``
 }
 
 export const environmentMedia = {

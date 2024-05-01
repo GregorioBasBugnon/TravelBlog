@@ -5,9 +5,7 @@ import { Observable } from 'rxjs';
 import { weather } from '../../../interfaces/weather';
 import { city } from '../../../interfaces/city';
 
-const city = 'buenos aires';
 const citySearch = 'bue';
-const timetable = 'current';
 
 function createDash(city:string) {
   return  city = city.replace(/\s/g, '-');
@@ -20,8 +18,8 @@ export class WeatherService {
 
   constructor(private http: HttpClient) {
   }
-  getWeatherToday(): Observable<weather> {
-    return this.http.get<weather>(`${environmentWeather.urlBase}point?place_id=${createDash(city)}&sections=${timetable}&timezone=UTC&language=en&units=metric&key=${environmentWeather.key}`);
+  getWeatherToday(cityName: string, timetable: string): Observable<weather> {
+    return this.http.get<any>(`${environmentWeather.urlBase}point?place_id=${createDash(cityName)}&sections=${timetable}&timezone=UTC&language=en&units=metric&key=${environmentWeather.key}`);
   }
 
   getCity(): Observable<city> {

@@ -1,6 +1,5 @@
 export const environmentCountries = {
   urlBase: `https://restcountries.com/v3.1/`,
-  // Authorization: ``
 }
 
 export const environmentMedia = {
@@ -10,7 +9,7 @@ export const environmentMedia = {
 }
 
 
-export const environmentPeople = {
+export const environmentPerson = {
   urlBase: `https://randomuser.me/api/`,
   Authorization: `f8e3c0f1cdmsh918fc17f229b21ap13de43jsn309e77a732e5`
 }
