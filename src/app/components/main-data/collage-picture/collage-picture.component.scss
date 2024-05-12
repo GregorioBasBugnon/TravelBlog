@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 
-:root{
+:root {
   --index: calc(1vw + 1vh);
   --transition: cubic-bezier(0.1, 0.7, 0, 1);
 }
@@ -15,13 +15,17 @@
   background-size: cover;
   background-position: center;
   cursor: pointer;
-  filter: grayscale(1) brightness(.8);
-  transition: transform 1.25s var(--transition), filter 3s var(--transition), width 1.25s var(--transition);
+  filter: grayscale(1) brightness(0.8);
+  transition: transform 1.25s var(--transition), filter 3s var(--transition),
+    width 1.25s var(--transition);
   will-change: transform, filter, rotateY, width;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
 
   &::before,
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     height: 100%;
     width: 20px;
@@ -57,7 +61,7 @@
 
   &:hover + * + * + * + * {
     filter: inherit;
-    transform: translateZ(calc(var(--index) * .5)) rotateY(5deg);
+    transform: translateZ(calc(var(--index) * 0.5)) rotateY(5deg);
     z-index: -4;
   }
 
@@ -78,7 +82,7 @@
 
   &:has(+ * + * + * + :hover) {
     filter: inherit;
-    transform: translateZ(calc(var(--index) * .5)) rotateY(-5deg);
+    transform: translateZ(calc(var(--index) * 0.5)) rotateY(-5deg);
   }
 
   &:active,
@@ -87,6 +91,21 @@
     filter: inherit;
     z-index: 100;
     transform: translateZ(calc(var(--index) * 12));
-    margin: 0 .35vw;
+    margin: 0 0.35vw;
   }
+
+  &:focus {
+    .author-photo {
+      display: inherit;
+    }
+  }
+}
+
+.author-photo {
+  margin: 0 0.6em 0.6em auto;
+  padding: 0.08em 0.3em 0.08em 0.3em;
+  background: rgba(248, 251, 250, 0.91);
+  // box-shadow: 0 0 2.5px 3.2px rgba(248, 253, 252, 0.849);
+  border-radius: 0.05em;
+  display: none;
 }

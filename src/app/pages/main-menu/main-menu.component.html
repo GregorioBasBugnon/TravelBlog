@@ -1,7 +1,15 @@
-<app-header></app-header>
+<app-header [photoTitleResult]="photoTitleResult$" [personProfileResult]="personProfileResult$"></app-header>
+
 <div class="body-main">
   <app-nav></app-nav>
-  <app-main-data></app-main-data>
-  <app-dashboard></app-dashboard>
+  <!-- @if (errorMessage) {
+  <p>{{errorMessage}} </p>
+  } -->
+  <app-main-data [personComentsResult]="personComentsResult$" [photosResult]="photosResult$"
+  [countryPopularResult]="countryPopularResult$" [photoByCountrieResult]="photoByCountrieResult$"
+  ></app-main-data>
+  <app-dashboard [personContactResult]="personContactResult$" [weatherTodayResult]="weatherTodayResult$"
+  [cityName]="city"></app-dashboard>
 </div>
+
 <app-footer></app-footer>

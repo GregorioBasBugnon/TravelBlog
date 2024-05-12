@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { peopleList } from '../../../interfaces/person';
 
 @Component({
   selector: 'app-header-child',
@@ -8,7 +9,24 @@ import { Component } from '@angular/core';
   styleUrl: './header-child.component.scss'
 })
 export class HeaderChildComponent {
+  @Input() user!: peopleList;
 
+  switchTheme() {
+    const moonIcon = document.querySelector(".moon") as HTMLElement;
+    const sunIcon = document.querySelector(".sun") as HTMLElement;
+    // const toggle = document.querySelector(".toggle-mode") as HTMLElement;
+    document.body.classList.toggle("darkmode");
+
+    if (document.body.classList.contains("darkmode")) {
+      sunIcon.classList.remove("hidden");
+      moonIcon.classList.add("hidden");
+      localStorage.setItem("theme", "dark");
+    } else {
+      sunIcon.classList.add("hidden");
+      moonIcon.classList.remove("hidden");
+      localStorage.setItem("theme", "light");
+    }
+  }
 }
 
 if (typeof window !== 'undefined') {
@@ -31,19 +49,4 @@ if (typeof window !== 'undefined') {
   });
 }
 
-// function switchTheme() {
-//   document.body.classList.toggle("darkmode");
-//   if (document.body.classList.contains("darkmode")) {
-//     sunIcon.classList.remove("hidden");
-//     moonIcon.classList.add("hidden");
-//     morningImage.classList.add("hidden");
-//     nightImage.classList.remove("hidden");
-//     localStorage.setItem("theme", "dark");
-//   } else {
-//     sunIcon.classList.add("hidden");
-//     moonIcon.classList.remove("hidden");
-//     morningImage.classList.remove("hidden");
-//     nightImage.classList.add("hidden");
-//     localStorage.setItem("theme", "light");
-//   }
-// }
+

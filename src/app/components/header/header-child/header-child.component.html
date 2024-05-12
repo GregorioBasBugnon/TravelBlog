@@ -11,15 +11,15 @@
   </div>
 
   <div class="user-info">
-    <h4>Kelsey Miller</h4>
-    <img src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/40b7cce2-c289-4954-9be0-938479832a9c"
+    <h4>{{user.results[0].name.first}} {{user.results[0].name.last}}</h4>
+    <img src="{{user.results[0].picture.medium}}"
       alt="user" />
     <div class="icon-container">
       <!-- <i class="fa fa-bell nav-icon"></i>
         <i class="fa fa-message nav-icon"></i> -->
       <i class="fa-regular fa-envelope notified"></i>
       <i class="fa-regular fa-bell notified"></i>
-      <div class="toggle-mode" onclick="switchTheme()">
+      <div class="toggle-mode hidden" (click)="switchTheme()">
         <div class="mode-icon moon">
           <i class="bx bxs-moon"></i>
         </div>
@@ -29,6 +29,4 @@
       </div>
     </div>
   </div>
-
-
 </div>

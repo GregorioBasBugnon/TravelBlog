@@ -1,44 +1,19 @@
+@if (navState) {
 <li class="nav-item active">
   <b></b>
   <b></b>
   <a href="#">
-    <i class="fa fa-house nav-icon"></i>
-    <span class="nav-text">Menu Principal</span>
+    <i class="fa fa-{{navIcon}} nav-icon"></i>
+    <span class="nav-text">{{navText}}</span>
   </a>
 </li>
-
+} @else {
 <li class="nav-item">
   <b></b>
   <b></b>
   <a href="#">
-    <i class="fa fa-user nav-icon"></i>
-    <span class="nav-text">Perfil</span>
+    <i class="fa fa-{{navIcon}} nav-icon"></i>
+    <span class="nav-text">{{navText}}</span>
   </a>
 </li>
-
-<li class="nav-item">
-  <b></b>
-  <b></b>
-  <a href="#">
-    <i class="fa fa-calendar-check nav-icon"></i>
-    <span class="nav-text">Agenda</span>
-  </a>
-</li>
-
-<li class="nav-item">
-  <b></b>
-  <b></b>
-  <a href="#">
-    <i class="fa fa-person-running nav-icon"></i>
-    <span class="nav-text">Actividades</span>
-  </a>
-</li>
-
-<li class="nav-item">
-  <b></b>
-  <b></b>
-  <a href="#">
-    <i class="fa fa-sliders nav-icon"></i>
-    <span class="nav-text">Configuración</span>
-  </a>
-</li>
+}

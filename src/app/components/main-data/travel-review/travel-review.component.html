@@ -1,0 +1,14 @@
+<div class="card review-card">
+  <h2>{{contact.name.first}} {{contact.name.last}}</h2>
+  <p><i>{{contact.email}}</i></p>
+  <div class="ratings">
+    @for(item of appreciation; track item; let i = $index){
+    <i class="bx {{item}}"></i>
+    }
+  </div>
+  <h4>{{country}}</h4>
+  <p>
+    {{description}}
+  </p>
+  <small>{{timeWriter}}</small>
+</div>

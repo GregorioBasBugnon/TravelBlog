@@ -4,7 +4,7 @@ export const environmentCountries = {
 }
 
 export const environmentMedia = {
-  urlBasePhoto: `https://api.pexels.com/v1/curated/`,
+  urlBasePhoto: `https://api.pexels.com/v1/`,
   urlBaseVideo: `https://api.pexels.com/videos/`,
   production: true,
   Authorization: `eUMKsvDxalAhL7arYlFRv5r7nYEt7jMgFZik4iW9DJkWkPFTLD0UvRih`

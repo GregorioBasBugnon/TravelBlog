@@ -1,14 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { HeaderChildComponent } from "./header-child/header-child.component";
+import { Observable } from 'rxjs';
+import { photo, photoList } from '../../interfaces/photo';
+import { AsyncPipe } from '@angular/common';
+import { peopleList } from '../../interfaces/person';
 
 @Component({
-    selector: 'app-header',
-    standalone: true,
-    templateUrl: './header.component.html',
-    styleUrl: './header.component.scss',
-    imports: [HeaderChildComponent]
+  selector: 'app-header',
+  standalone: true,
+  templateUrl: './header.component.html',
+  styleUrl: './header.component.scss',
+  imports: [AsyncPipe, HeaderChildComponent]
 })
 export class HeaderComponent {
-
+  @Input() photoTitleResult!: Observable<photo>;
+  @Input() personProfileResult!: Observable<peopleList>
 }
 

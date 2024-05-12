@@ -1,19 +1,41 @@
 <section class="main-content">
-    <div class="wrapper">
-        <app-collage-picture></app-collage-picture>
-    </div>
+  <div class="wrapper">
+    @if(photosResult | async; as photosItem){
+    <ng-container>
+      @for(item of photosItem.photos; track item.id){
+      <app-collage-picture [photo]="item"></app-collage-picture>
+      }
+    </ng-container>
+    }
 
-    <div class="popular">
-      <h1>Paises Populares</h1>
-      <div class="popular-container">
-        <app-popular-countries></app-popular-countries>
-      </div>
+  </div>
+  <div class="popular">
+    <h1>Paises Populares</h1>
+    <div class="popular-container">
+      @if(countryPopularResult | async; as country){
+      @if(photoByCountrieResult | async; as photo){
+      <ng-container>
+        @for(item of country; track item; let i = $index){
+        <ng-container>
+          @if(i < 5){ <app-popular-country [countryItem]="item" [photoItem] = "photo.photos[i]"></app-popular-country>
+            }
+        </ng-container>
+        }
+      </ng-container>
+      }
+      }
     </div>
-
-    <div class="reviews">
-      <h1>Cometarios de diferentes viajes</h1>
-      <div class="review-container">
-        <app-travel-reviews></app-travel-reviews>
-      </div>
+  </div>
+  <div class="reviews">
+    <h1>Cometarios de diferentes viajes</h1>
+    <div class="review-container">
+      @if(personComentsResult | async; as person){
+      <ng-container>
+        @for(item of person.results; track item.id){
+        <app-travel-review [contact]="item"></app-travel-review>
+        }
+      </ng-container>
+      }
     </div>
+  </div>
 </section>

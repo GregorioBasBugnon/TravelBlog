@@ -23,16 +23,20 @@ export class MediaService {
   constructor(private http: HttpClient) { }
 
   getPhoto(page: number, perPage: number): Observable<photoList> {
-    return this.http.get<photoList>(`${environmentMedia.urlBasePhoto}?page=${page}&per_page=${perPage}`, httpHeaderMedia);
+    return this.http.get<photoList>(`${environmentMedia.urlBasePhoto}curated/?page=${page}&per_page=${perPage}`, httpHeaderMedia);
   }
 
   getPhotos(): Observable<photoList> {
-    return this.http.get<photoList>(`${environmentMedia.urlBasePhoto}?page=${page}`, httpHeaderMedia);
+    return this.http.get<photoList>(`${environmentMedia.urlBasePhoto}curated/?page=${page}`, httpHeaderMedia);
   }
 
   getPhotosEspec(orientation: string, size: string, page: number, perPage: number): Observable<photoList> {
-    return this.http.get<photoList>(`${environmentMedia.urlBasePhoto}?orientation=
+    return this.http.get<photoList>(`${environmentMedia.urlBasePhoto}curated/?orientation=
     ${orientation}&size=${size}&page=${page}&per_page=${perPage}`, httpHeaderMedia);
+  }
+
+  getPhotosById(id: number): Observable<photo> {
+    return this.http.get<photo>(`${environmentMedia.urlBasePhoto}photos/${id}`, httpHeaderMedia);
   }
 
   getVideo(): Observable<video> {

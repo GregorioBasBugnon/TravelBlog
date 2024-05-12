@@ -1,0 +1,33 @@
+<div class="active-weather">
+  <div class="active-weather-container">
+    @if (weather != undefined) {
+    <div class="box">
+      <!-- <div class="circle">
+        <h2>85<small>%</small></h2>
+      </div> -->
+      <img src="../../../../assets/image/weather/{{imgWeather}}.png" alt="imagen de {{weatherSpanish}}"
+        id="img-weather">
+      <p>{{weather.current.temperature}}º</p>
+    </div>
+    <div class="weather-content">
+      <p><span>Ciudad:</span> {{cityName}}</p>
+      <p><span>Tiempo:</span> {{weatherSpanish}}</p>
+      <p><span>Velocidad de Viento:</span> {{weather.current.wind.speed}}</p>
+      <p><span>Probabilidad de Precipitación:</span> {{weather.current.precipitation.total}}%</p>
+      <p><span>Cantidad de nubes:</span> {{weather.current.cloud_cover}}%</p>
+    </div>
+    } @else {
+    <div class="box">
+      <img src="../../../../assets/image/weather/error-weather.png" alt="imagen de tiempo de error"
+        id="img-weather">
+      <p>Problemas para conocer el tiempo de {{cityName}}</p>
+    </div>
+    <div class="weather-content">
+      <p><span>Tiempo:</span> -</p>
+      <p><span>Velocidad de Viento:</span> -</p>
+      <p><span>Probabilidad de Precipitación:</span> -</p>
+      <p><span>Cantidad de nubes:</span> -</p>
+    </div>
+    }
+  </div>
+</div>

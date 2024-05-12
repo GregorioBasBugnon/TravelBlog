@@ -1,23 +1,23 @@
-<div class="dashboard-content">
-  <div class="active-weather">
-    <h1 style="align-self: flex-start">Tiempo</h1>
-    <div class="active-weather-container">
-      <div class="box" style="--i: 85%">
-        <div class="circle">
-          <h2>85<small>%</small></h2>
-        </div>
-      </div>
-      <div class="weather-content">
-        <p><span>Clima:</span> Soleado</p>
-        <p><span>Humedad:</span> 85%</p>
-        <p><span>Temperatura:</span> 30ª</p>
-      </div>
-    </div>
+<aside class="dashboard-content">
+  <h1 style="align-self: flex-start">Tiempo en tú ciudad</h1>
+  <div class="containers-weather">
+    @if(weatherTodayResult | async; as weather){
+    <app-city-weather [weather]="weather" [cityName]="cityName"></app-city-weather>
+    } @else{
+      <app-city-weather [weather]="weatherVoid" [cityName]="cityName"></app-city-weather>
+    }
   </div>
+
   <div class="contacts">
     <h1>Contactos</h1>
     <div class="contacts-container">
-      <app-contacts></app-contacts>
+      @if(personContactResult | async; as person){
+      <ng-container>
+        @for(item of person.results; track item.id){
+        <app-contact [contact]="item"></app-contact>
+        }
+      </ng-container>
+      }
     </div>
   </div>
-</div>
+</aside>
