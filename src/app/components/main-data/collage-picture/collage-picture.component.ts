@@ -9,6 +9,6 @@ import { photo } from '../../../interfaces/photo';
   styleUrl: './collage-picture.component.scss'
 })
 export class CollagePictureComponent {
-  @Input() photo!: photo;
+  @Input() photo!: photo | undefined;
 
 }

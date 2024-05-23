@@ -6,8 +6,11 @@
       <app-collage-picture [photo]="item"></app-collage-picture>
       }
     </ng-container>
+    } @else {
+    <ng-container *ngFor="let item of sizePhoto">
+      <app-collage-picture [photo]="photoVoid"></app-collage-picture>
+    </ng-container>
     }
-
   </div>
   <div class="popular">
     <h1>Paises Populares</h1>
@@ -17,13 +20,18 @@
       <ng-container>
         @for(item of country; track item; let i = $index){
         <ng-container>
-          @if(i < 5){ <app-popular-country [countryItem]="item" [photoItem] = "photo.photos[i]"></app-popular-country>
+          @if(i < 5){ <app-popular-country [countryItem]="item" [photoItem]="photo.photos[i]"></app-popular-country>
             }
         </ng-container>
         }
       </ng-container>
       }
+      } @else {
+      <ng-container *ngFor="let item of sizeCountry">
+        <app-popular-country [countryItem]="countryVoid" [photoItem]="photoVoid"></app-popular-country>
+      </ng-container>
       }
+
     </div>
   </div>
   <div class="reviews">
@@ -35,6 +43,8 @@
         <app-travel-review [contact]="item"></app-travel-review>
         }
       </ng-container>
+      } @else {
+      <app-travel-review [contact]="personVoid"></app-travel-review>
       }
     </div>
   </div>

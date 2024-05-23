@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { ContactComponent } from './contact/contact.component';
 import { CityWeatherComponent } from "./city-weather/city-weather.component";
 import { Observable } from 'rxjs';
-import { peopleList } from '../../interfaces/person';
+import { peopleList, person } from '../../interfaces/person';
 import { AsyncPipe } from '@angular/common';
 import { weather } from '../../interfaces/weather';
 
@@ -18,4 +18,5 @@ export class DashboardComponent {
   @Input() weatherTodayResult!: Observable<weather>;
   @Input() cityName!: string;
   weatherVoid: weather | undefined;
+  personVoid: person | undefined;
 }

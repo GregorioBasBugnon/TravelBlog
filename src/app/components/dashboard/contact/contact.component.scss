@@ -1,55 +1,78 @@
-//Contacts
+// Variables
+@mixin icon-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #aee7ec;
+  border: 0.25px solid rgb(232, 238, 240);
+  height: 40px;
+}
+@mixin icon-style($size) {
+  color: #000000;
+  font-size: $size;
+}
+@mixin icon-style-hover($size, $weight) {
+  color: #000000;
+  font-size: $size;
+  font-weight: $weight;
+}
 
+// Contacts
 .contact-status {
   display: flex;
   flex-direction: column;
   padding: 5px 0;
   border-bottom: 2px solid var(--border-color);
   margin-bottom: 15px;
+
+  &:last-child {
+    border-bottom: unset;
+  }
+
+  .contact-activity {
+    display: flex;
+    align-items: center;
+    column-gap: 14px;
+
+    img,
+    .user-error {
+      max-width: 45px;
+      aspect-ratio: 1/1;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .user-error {
+      @include icon-center();
+      .fa-user-ninja {
+        @include icon-style(22px);
+      }
+      .fa-user-ninja:hover {
+        @include icon-style-hover(26px, 700);
+      }
+    }
+    p {
+      font-size: 0.9rem;
+      line-height: 1.5;
+      padding-right: 10px;
+
+      span {
+        font-weight: 700;
+        color: var(--accent-color);
+        margin-left: 2px;
+        cursor: pointer;
+
+        &:hover {
+          text-decoration: underline;
+          text-decoration-color: var(--accent-color);
+          text-decoration-thickness: 1.5px;
+        }
+      }
+    }
+  }
+
+  small {
+    font-size: 0.8rem;
+    opacity: 0.5;
+    margin-left: auto;
+  }
 }
-
-.contact-status:last-child {
-  border-bottom: unset;
-}
-
-.contact-activity {
-  display: flex;
-  align-items: center;
-  column-gap: 14px;
-}
-
-.contact-activity img {
-  max-width: 45px;
-  aspect-ratio: 1/1;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-.contact-activity p {
-  font-size: 0.9rem;
-  line-height: 1.5;
-  padding-right: 10px;
-}
-
-.contact-activity p span {
-  font-weight: 700;
-  color: var(--accent-color);
-  margin-left: 2px;
-  cursor: pointer;
-}
-
-.contact-activity p span:hover {
-  text-decoration: underline;
-  text-decoration-color: var(--accent-color);
-  text-decoration-thickness: 1.5px;
-}
-
-.contact-status small {
-  font-size: 0.8rem;
-  opacity: 0.5;
-  margin-left: auto;
-}
-
-
-
-

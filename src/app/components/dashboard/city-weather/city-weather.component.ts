@@ -96,10 +96,6 @@ export class CityWeatherComponent {
             this.weatherSpanish = 'Posible nieve';
             this.imgWeather = 'snow';
             break;
-          // case 'Snow shower':
-          //   this.weatherSpanish = 'Chubasco de nieve';
-          //   this.imgWeather = 'snow';
-          //   break;
           case 'Rain and snow':
             this.weatherSpanish = 'Lluvia y nieve';
             this.imgWeather = 'snow';
@@ -112,10 +108,6 @@ export class CityWeatherComponent {
             this.weatherSpanish = 'Lluvia helada';
             this.imgWeather = 'rain-and-snow';
             break;
-          // case 'Possible freezing rain':
-          //   this.weatherSpanish = 'Posible lluvia helada';
-          //   this.imgWeather = 'rain-and-snow';
-          //   break;
           case 'Hail':
             this.weatherSpanish = 'Granizo';
             this.imgWeather = 'freezing-rain';
@@ -128,38 +120,10 @@ export class CityWeatherComponent {
             this.weatherSpanish = 'Mayormente despejado (noche)';
             this.imgWeather = 'moon';
             break;
-          // case 'Partly clear':
-          //   this.weatherSpanish = 'Parcialmente despejado (noche)';
-          //   this.imgWeather = 'rain-shower-night';
-          // break;
-          // case 'Mostly cloudy':
-          //   this.weatherSpanish = 'Mayormente nublado (noche)';
-          //   this.imgWeather = 'rain-shower-night';
-          //   break;
-          // case 'Cloudy':
-          //   this.weatherSpanish = 'Nublado (noche)';
-          //   this.imgWeather = 'mostly-cloudy-night';
-          //   break;
-          // case 'Overcast with low clouds':
-          //   this.weatherSpanish = 'Cubierto con nubes bajas (noche)';
-          //   this.imgWeather = 'mostly-cloudy-night';
-          //   break;
-          // case 'Rain shower':
-          //   this.weatherSpanish = 'Aguacero (noche)';
-          //   this.imgWeather = 'rain-and-snow-night';
-          //   break;
-          // case 'Local thunderstorms':
-          //   this.weatherSpanish = 'Tormentas eléctricas locales (noche)';
-          //   this.imgWeather = 'thunderstorm';
-          //   break;
           case 'Snow shower':
             this.weatherSpanish = 'Chubasco de nieve (noche)';
             this.imgWeather = 'snow';
             break;
-          // case 'Rain and snow':
-          //   this.weatherSpanish = 'Lluvia y nieve (noche)';
-          //   this.imgWeather = 'snow';
-          //   break;
           case 'Possible freezing rain':
             this.weatherSpanish = 'Posible lluvia helada (noche)';
             this.imgWeather = 'freezing-rain';
@@ -171,6 +135,6 @@ export class CityWeatherComponent {
         }
       }
 
-      });
-}
+    });
+  }
 }

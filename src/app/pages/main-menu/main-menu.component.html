@@ -2,14 +2,12 @@
 
 <div class="body-main">
   <app-nav></app-nav>
-  <!-- @if (errorMessage) {
-  <p>{{errorMessage}} </p>
-  } -->
-  <app-main-data [personComentsResult]="personComentsResult$" [photosResult]="photosResult$"
-  [countryPopularResult]="countryPopularResult$" [photoByCountrieResult]="photoByCountrieResult$"
-  ></app-main-data>
-  <app-dashboard [personContactResult]="personContactResult$" [weatherTodayResult]="weatherTodayResult$"
-  [cityName]="city"></app-dashboard>
+  <div class="content-main">
+    <app-main-data [personComentsResult]="personComentsResult$" [photosResult]="photosResult$"
+      [countryPopularResult]="countryPopularResult$" [photoByCountrieResult]="photoByCountrieResult$"></app-main-data>
+    <app-dashboard [personContactResult]="personContactResult$" [weatherTodayResult]="weatherTodayResult$"
+      [cityName]="city"></app-dashboard>
+  </div>
 </div>
 
 <app-footer></app-footer>

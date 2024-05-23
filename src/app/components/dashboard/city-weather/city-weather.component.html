@@ -2,9 +2,6 @@
   <div class="active-weather-container">
     @if (weather != undefined) {
     <div class="box">
-      <!-- <div class="circle">
-        <h2>85<small>%</small></h2>
-      </div> -->
       <img src="../../../../assets/image/weather/{{imgWeather}}.png" alt="imagen de {{weatherSpanish}}"
         id="img-weather">
       <p>{{weather.current.temperature}}º</p>
@@ -18,8 +15,7 @@
     </div>
     } @else {
     <div class="box">
-      <img src="../../../../assets/image/weather/error-weather.png" alt="imagen de tiempo de error"
-        id="img-weather">
+      <img src="../../../../assets/image/weather/error-weather.png" alt="imagen de tiempo de error" id="img-weather">
       <p>Problemas para conocer el tiempo de {{cityName}}</p>
     </div>
     <div class="weather-content">

@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, OnInit, Output, ViewChild } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
 import { catchError, EMPTY, forkJoin, Observable } from 'rxjs';
 import { DashboardComponent } from '../../components/dashboard/dashboard.component';
@@ -33,8 +33,7 @@ export class MainMenuComponent implements OnInit {
   public personContactResult$!: Observable<peopleList>
   public personProfileResult$!: Observable<peopleList>
   public weatherTodayResult$!: Observable<weather>
-  public errorMessage!: string;
-  // @ViewChild(MainDataComponent) mainDataComponent!: MainDataComponent;
+  @Output() errorMessage!: string;
 
   constructor(private personService: PersonService, private mediaService: MediaService,
     private countryService: CountryService, private weatherService: WeatherService) { }
@@ -61,8 +60,8 @@ export class MainMenuComponent implements OnInit {
         return EMPTY;
       })),
 
-      // this.photoTitleResult$ = this.mediaService.getPhotosById(22717472).pipe(catchError((error: string) => {
-      // this.photoTitleResult$ = this.mediaService.getPhotosById(22702771).pipe(catchError((error: string) => {
+      // background red theme, this.photoTitleResult$ = this.mediaService.getPhotosById(22717472).pipe(catchError((error: string) => {
+      // background blue theme, this.photoTitleResult$ = this.mediaService.getPhotosById(22702771).pipe(catchError((error: string) => {
       this.photoTitleResult$ = this.mediaService.getPhotosById(21967469).pipe(catchError((error: string) => {
         this.errorMessage = error;
         return EMPTY;
@@ -78,56 +77,12 @@ export class MainMenuComponent implements OnInit {
         return EMPTY;
       })),
 
-    this.city = "Madrid";
+      this.city = "Santa Cruz de Tenerife";
     this.weatherTodayResult$ = this.weatherService.getWeatherToday(this.city, "current").pipe(catchError((error: string) => {
       this.errorMessage = error;
       return EMPTY;
     }))
-
-
-    // this.personContactResult$ = this.personService.getPeopleSpecify(7, 1, "male", "rkn").pipe(catchError((error: string) => {
-    //   this.errorMessage = error;
-    //   return EMPTY;
-    // }))
   }
-
-  // ngAfterViewInit(): void {
-
-  //   // for (let i = 0; i < this.mainDataComponent.countryNameSelection.length; i++) {
-  //     Promise.resolve().then(() => {
-  //       // console.log("hooooooooooooooooooooooooooola");
-
-  //       // console.log(this.countrysPopularResult$);
-  //       this.countriesPopularResult$ =  this.countrieService.getCountrieEspecify(this.updateCountrieName()).pipe(
-  //           catchError((error: string) => {
-  //             this.errorMessage = error;
-  //             return EMPTY;
-  //           }))
-
-
-  //       }
-  //       )
-  //     }
-  // }
-
-  // forkJoin(this.countriesPopularResult$).subscribe(
-  //   results => {
-  //     console.log('Results:', results);  // Log the results
-  //     // Access the attribute of the emitted value and log it
-  //     if ( results[0] == undefined || results[0].capital[0] == '') {
-  //       console.log('Attribute of emitted value:', results[0].capital[0]);  // Replace 'someAttribute' with the actual attribute name
-  //     } else {
-  //       console.warn('No results received');
-  //     }
-  //   },
-  //   error => {
-  //     console.error('Error fetching countries:', error);  // Log the error
-  //     this.errorMessage = 'Error fetching countries';
-  //   }
-  // );
-
-  // }
-
 }
 
 

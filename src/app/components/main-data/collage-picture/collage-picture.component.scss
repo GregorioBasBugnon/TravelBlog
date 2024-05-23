@@ -1,3 +1,20 @@
+// Variables
+$item-background-hover: rgb(134, 235, 235);
+
+@mixin icon-center {
+  align-items: center;
+  justify-content: center;
+}
+@mixin icon-style($size) {
+  color: #000000;
+  font-size: $size;
+}
+@mixin icon-style-hover($size, $weight) {
+  color: #000000;
+  font-size: $size;
+  font-weight: $weight;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -15,13 +32,23 @@
   background-size: cover;
   background-position: center;
   cursor: pointer;
-  filter: grayscale(1) brightness(0.8);
+  // filter: grayscale(1) brightness(0.8);
   transition: transform 1.25s var(--transition), filter 3s var(--transition),
     width 1.25s var(--transition);
   will-change: transform, filter, rotateY, width;
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
+  background-color: rgb(173, 236, 236);
+  &.error {
+    @include icon-center();
+  }
+  .bx-wifi-off {
+    @include icon-style(45px);
+  }
+  .bx-wifi-off:hover {
+    @include icon-style-hover(50px, 700);
+  }
 
   &::before,
   &::after {
@@ -39,50 +66,59 @@
   &:hover {
     filter: inherit;
     transform: translateZ(calc(var(--index) * 8));
+    background-color: $item-background-hover;
   }
 
   &:hover + * {
     filter: inherit;
     transform: translateZ(calc(var(--index) * 6)) rotateY(25deg);
     z-index: -1;
+    background-color: $item-background-hover;
   }
 
   &:hover + * + * {
     filter: inherit;
     transform: translateZ(calc(var(--index) * 3.5)) rotateY(20deg);
     z-index: -2;
+    background-color: $item-background-hover;
   }
 
   &:hover + * + * + * {
     filter: inherit;
     transform: translateZ(calc(var(--index) * 1.7)) rotateY(15deg);
     z-index: -3;
+    background-color: $item-background-hover;
   }
 
   &:hover + * + * + * + * {
     filter: inherit;
     transform: translateZ(calc(var(--index) * 0.5)) rotateY(5deg);
     z-index: -4;
+    background-color: $item-background-hover;
   }
 
   &:has(+ :hover) {
     filter: inherit;
     transform: translateZ(calc(var(--index) * 6)) rotateY(-25deg);
+    background-color: $item-background-hover;
   }
 
   &:has(+ * + :hover) {
     filter: inherit;
     transform: translateZ(calc(var(--index) * 3.5)) rotateY(-20deg);
+    background-color: $item-background-hover;
   }
 
   &:has(+ * + * + :hover) {
     filter: inherit;
     transform: translateZ(calc(var(--index) * 1.7)) rotateY(-15deg);
+    background-color: $item-background-hover;
   }
 
   &:has(+ * + * + * + :hover) {
     filter: inherit;
     transform: translateZ(calc(var(--index) * 0.5)) rotateY(-5deg);
+    background-color: $item-background-hover;
   }
 
   &:active,
@@ -99,13 +135,12 @@
       display: inherit;
     }
   }
-}
 
-.author-photo {
-  margin: 0 0.6em 0.6em auto;
-  padding: 0.08em 0.3em 0.08em 0.3em;
-  background: rgba(248, 251, 250, 0.91);
-  // box-shadow: 0 0 2.5px 3.2px rgba(248, 253, 252, 0.849);
-  border-radius: 0.05em;
-  display: none;
+  .author-photo {
+    margin: 0 0.6em 0.6em auto;
+    padding: 0.08em 0.3em 0.08em 0.3em;
+    background: rgba(248, 251, 250, 0.91);
+    border-radius: 0.05em;
+    display: none;
+  }
 }

@@ -11,7 +11,7 @@ let countrieGived: number[] = [];
   styleUrl: './travel-review.component.scss'
 })
 export class TravelReviewComponent {
-  @Input() contact!: person;
+  @Input() contact!: person | undefined;
   descriptionOption = [
     { id: 1, country: "Italia", timeWriter: "Hace 1 hora", appreciation: 3.5, description: "Italia es un país lleno de historia, cultura y belleza.Desde las antiguas ruinas de Roma hasta los canales de Venecia, ofrece una experiencia única en cada rincón.Su cocina es renombrada mundialmente, con delicias como pizzas, pastas y gelatos.Las vistas panorámicas de la costa amalfitana y los Alpes son impresionantes.Cada región tiene su propia personalidad y atractivos, desde la Toscana hasta Sicilia.En resumen, Italia es un destino que cautiva con su encanto, gastronomía y paisajes inolvidables." },
     { id: 2, country: "Japón", timeWriter: "Hace unos pocos minutos", appreciation: 5.0, description: "¡Qué experiencia tan asombrosa tuve en mi viaje a Japón! Este país tiene una forma única de combinar la tradición con la modernidad, creando una atmósfera verdaderamente cautivadora. Desde las bulliciosas calles de Tokio hasta los serenos templos de Kyoto, cada momento fue una aventura inolvidable." },
@@ -28,7 +28,7 @@ export class TravelReviewComponent {
   timeWriter = this.randomSelectTimeWriter();
   appreciation = this.randomSelectAppreciation();
 
-  randomSelectCountry(): string {
+  private randomSelectCountry(): string {
     let country = "";
 
     this.countrySelec = Math.floor(Math.random() * (this.descriptionOption.length));
@@ -43,17 +43,17 @@ export class TravelReviewComponent {
     return country;
   }
 
-  randomSelectDescription(): string {
+  private randomSelectDescription(): string {
     let description = this.descriptionOption[this.countrySelec].description;
     return description;
   }
 
-  randomSelectTimeWriter(): string {
+  private randomSelectTimeWriter(): string {
     let timeWriter = this.descriptionOption[this.countrySelec].timeWriter;
     return timeWriter;
   }
 
-  randomSelectAppreciation(): string[] {
+  private randomSelectAppreciation(): string[] {
     let appreciation = this.descriptionOption[this.countrySelec].appreciation;
     let starFull = "bxs-star";
     let starHalf = "bxs-star-half";

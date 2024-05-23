@@ -7,8 +7,8 @@ import { city } from '../../../interfaces/city';
 
 const citySearch = 'bue';
 
-function createDash(city:string) {
-  return  city = city.replace(/\s/g, '-');
+function createDash(city: string) {
+  return city = city.replace(/\s/g, '-');
 }
 
 @Injectable({

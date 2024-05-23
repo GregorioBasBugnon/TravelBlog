@@ -10,8 +10,8 @@ describe('CityWeatherComponent', () => {
     await TestBed.configureTestingModule({
       imports: [CityWeatherComponent]
     })
-    .compileComponents();
-    
+      .compileComponents();
+
     fixture = TestBed.createComponent(CityWeatherComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

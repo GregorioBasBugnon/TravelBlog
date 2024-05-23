@@ -10,8 +10,8 @@ describe('MainMenuComponent', () => {
     await TestBed.configureTestingModule({
       imports: [MainMenuComponent]
     })
-    .compileComponents();
-    
+      .compileComponents();
+
     fixture = TestBed.createComponent(MainMenuComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

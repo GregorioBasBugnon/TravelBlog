@@ -1,7 +1,8 @@
 <nav class="main-menu">
   <ul>
     @for(item of navList; track item.id){
-    <app-nav-item [navIcon]="item.icon" [navText]="item.navText" [navState]="item.active"></app-nav-item>
+    <app-nav-item (click)="navSelected(item)" [navIcon]="item.icon" [navText]="item.navText"
+      [navState]="item.active"></app-nav-item>
     }
   </ul>
 </nav>

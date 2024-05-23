@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DashboardComponent } from './dashboard.component';
+import { AlertMessageComponent } from './alert-message.component';
 
-describe('DashboardComponent', () => {
-  let component: DashboardComponent;
-  let fixture: ComponentFixture<DashboardComponent>;
+describe('AlertMessageComponent', () => {
+  let component: AlertMessageComponent;
+  let fixture: ComponentFixture<AlertMessageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DashboardComponent]
+      imports: [AlertMessageComponent]
     })
       .compileComponents();
 
-    fixture = TestBed.createComponent(DashboardComponent);
+    fixture = TestBed.createComponent(AlertMessageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

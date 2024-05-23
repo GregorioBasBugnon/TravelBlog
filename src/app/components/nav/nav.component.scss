@@ -1,9 +1,44 @@
+// Variables
+$main-menu-background: rgb(73, 57, 113);
+$font-family: "Roboto", sans-serif;
+
+// MAIN MENU
 .main-menu {
   overflow: hidden;
-  background: rgb(73, 57, 113);
+  background: $main-menu-background;
   padding-top: 10px;
   border-radius: 15px 0 0 15px;
-  font-family: "Roboto", sans-serif;
+  font-family: $font-family;
+
+  @media (max-width: 1250px) {
+    ul {
+      padding-inline-start: 0;
+      display: flex;
+      flex-direction: column;
+      list-style-type: none;
+    }
+  }
+
+  @media (max-width: 738px) {
+    position: fixed;
+    z-index: 1;
+    width: 97%;
+    top: 730px;
+    padding-top: 0;
+    border-radius: 5px;
+
+    ul {
+      padding-left: 35px;
+      padding-right: 35px;
+      flex-direction: row;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+  @media (max-width: 500px) {
+    ul {
+      padding-left: 2%;
+      padding-right: 2%;
+    }
+  }
 }
-
-

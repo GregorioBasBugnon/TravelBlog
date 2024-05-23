@@ -1,80 +1,178 @@
+// Variables
+$nav-item-color: #fff;
+$nav-item-background: #492357;
+$active-nav-item-background: rgb(254, 254, 254);
+$active-nav-item-color: #000;
+$font-size: 1rem;
+$nav-icon-size: 60px;
+$nav-text-width: 120px;
+$hover-animation: 1.5s cubic-bezier(0.25, 1, 0.3, 1) wipe-in-left both;
+$nav-background: rgb(73, 57, 113);
 
+// NAV ITEM
 .nav-item {
   position: relative;
   display: block;
+  cursor: pointer;
+
+  a {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    color: $nav-item-color;
+    font-size: $font-size;
+    padding: 15px 0;
+    margin-left: 10px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+  }
+
+  &:hover:not(.active):hover {
+    a {
+      border-top-left-radius: 15px;
+      border-bottom-left-radius: 15px;
+      background-color: $nav-item-background;
+      animation: $hover-animation;
+      text-decoration: none;
+    }
+  }
+
+  &.active {
+    b:nth-child(1),
+    b:nth-child(2) {
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+      color: $active-nav-item-color;
+      background: $active-nav-item-background;
+    }
+  }
+
+  b:nth-child(1),
+  b:nth-child(2) {
+    position: absolute;
+    height: 15px;
+    width: 100%;
+    background: $nav-item-color;
+    display: none;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: $nav-background;
+    }
+  }
+
+  b:nth-child(1) {
+    top: -15px;
+
+    &::before {
+      border-bottom-right-radius: 20px;
+    }
+  }
+
+  b:nth-child(2) {
+    bottom: -15px;
+
+    &::before {
+      border-top-right-radius: 20px;
+    }
+  }
 }
 
-.nav-item a {
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  font-size: 1rem;
-  padding: 15px 0;
-  margin-left: 10px;
-  border-top-left-radius: 20px;
-  border-bottom-left-radius: 20px;
+// Keyframes
+@keyframes wipe-in-left {
+  from {
+    clip-path: inset(0 0 0 100%);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
 }
 
-.nav-item b:nth-child(1), .nav-item b:nth-child(2) {
-  position: absolute;
-  height: 15px;
-  width: 100%;
-  background: #fff;
-  display: none;
-}
-
-.nav-item b:nth-child(1) {
-  top: -15px;
-}
-
-.nav-item b:nth-child(2) {
-  bottom: -15px;
-}
-
-.nav-item b:nth-child(1)::before,  .nav-item b:nth-child(2)::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgb(73, 57, 113);
-}
-
-.nav-item b:nth-child(1)::before {
-  border-bottom-right-radius: 20px;
-}
-
-.nav-item b:nth-child(2)::before {
-  border-top-right-radius: 20px;
-}
-
-.nav-item.active b:nth-child(1),
-.nav-item.active b:nth-child(2) {
-  display: block;
-}
-
-.nav-item.active a {
-  text-decoration: none;
-  color: #000;
-  background: rgb(254, 254, 254);
-}
-
+// NAV ICON
 .nav-icon {
-  width: 60px;
+  width: $nav-icon-size;
   height: 20px;
   font-size: 20px;
   text-align: center;
 }
 
+// NAV TEXT
 .nav-text {
   display: block;
-  width: 120px;
+  width: $nav-text-width;
   height: 20px;
 }
 
+// Media Queries
+@media (max-width: 738px) {
+  .nav-item {
+    &:hover {
+      a {
+        border-radius: 15px;
+      }
+    }
 
+    &.active {
+      a {
+        border-radius: 16px;
+      }
 
+      b::before,
+      b {
+        border-radius: 0;
+      }
+    }
+
+    b {
+      display: none;
+      top: 0;
+      bottom: 0;
+    }
+
+    a {
+      flex-direction: column;
+      padding-top: 12px;
+      padding-bottom: 12px;
+
+      i {
+        font-size: 24px;
+      }
+
+      span {
+        margin-top: 10px;
+        font-size: small;
+        width: 75px;
+        display: flex;
+        justify-content: center;
+      }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .nav-item {
+    a {
+      margin: 0px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      i {
+        font-size: 18px;
+      }
+
+      span {
+        margin-top: 7px;
+        font-size: small;
+      }
+    }
+  }
+}

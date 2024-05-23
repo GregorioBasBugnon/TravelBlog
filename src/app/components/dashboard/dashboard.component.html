@@ -4,7 +4,7 @@
     @if(weatherTodayResult | async; as weather){
     <app-city-weather [weather]="weather" [cityName]="cityName"></app-city-weather>
     } @else{
-      <app-city-weather [weather]="weatherVoid" [cityName]="cityName"></app-city-weather>
+    <app-city-weather [weather]="weatherVoid" [cityName]="cityName"></app-city-weather>
     }
   </div>
 
@@ -17,6 +17,9 @@
         <app-contact [contact]="item"></app-contact>
         }
       </ng-container>
+      }
+      @else {
+        <app-contact [contact]="personVoid"></app-contact>
       }
     </div>
   </div>

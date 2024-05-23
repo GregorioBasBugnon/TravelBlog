@@ -1,3 +1,7 @@
+// Variables
+$star-color:#ddcc14;
+$star-color-error:rgb(134, 235, 235);
+
 /* REVIEWS */
 
 .review-card {
@@ -25,7 +29,15 @@
   }
 }
 
-.ratings i {
-  color: #ddcc14;
-  font-size: 1.15rem;
+.ratings {
+  &.error {
+    i {
+      color: $star-color-error;
+      font-size: 1.15rem;
+    }
+  }
+  i {
+    color: $star-color;
+    font-size: 1.15rem;
+  }
 }

@@ -1,11 +1,23 @@
 <header>
   @if(photoTitleResult | async; as photosTitle){
-    <div class="header-banner" style="background-image: url({{photosTitle.src.original}})" >
-      <h1>AgeTraveling</h1>
+  <div class="header-banner" style="background-image: url({{photosTitle.src.original}})">
+    <h1>AgeTraveling</h1>
+  </div>
+  }
+  @else {
+  <div class="header-banner">
+    <h1>AgeTraveling</h1>
+    <div class="banner-error">
+      <i class='bx bx-wifi-off'></i>
     </div>
+  </div>
   }
 
-  @if(personProfileResult | async; as photosTitle){
-    <app-header-child [user] = "photosTitle"></app-header-child>
+  @if(personProfileResult | async; as userLogin){
+  <app-header-child [user]="userLogin"></app-header-child>
+  }
+  @else {
+    <app-header-child [user]="personVoid"></app-header-child>
+
   }
 </header>

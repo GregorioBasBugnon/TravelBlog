@@ -8,24 +8,8 @@ import { AsyncPipe, CommonModule } from '@angular/common';
   templateUrl: './nav-item.component.html',
   styleUrl: './nav-item.component.scss'
 })
-export class NavItemComponent implements AfterViewInit {
-
-  constructor( private el: ElementRef) { }
-
+export class NavItemComponent {
   @Input() navIcon!: string;
   @Input() navText!: string;
   @Input() navState!: boolean;
-
-  ngAfterViewInit(): void {
-    let navItems = this.el.nativeElement.querySelectorAll('.nav-item') as NodeListOf<HTMLElement>;
-
-    navItems.forEach((navItem, i) => {
-      navItem.addEventListener('click', () => {
-        navItems.forEach((item, j) => {
-          item.classList.remove('active');
-        });
-        navItem.classList.add('active');
-      });
-    });
-  }
 }

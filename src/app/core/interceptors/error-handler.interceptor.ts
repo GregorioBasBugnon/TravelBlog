@@ -8,6 +8,8 @@ export const errorHandlerInterceptor: HttpInterceptorFn = (req, next) => {
     error.error instanceof ErrorEvent ? errorMessage = `Error: ${error.message}, type of error:${error.type}`
       : errorMessage = `Error code: ${error.status}, Status: ${error.statusText}, Description: ${error.message}`;
 
+    console.error(errorMessage);
+
     return throwError(() => errorMessage);
   }));
 };

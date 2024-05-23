@@ -12,6 +12,7 @@ import { photo } from '../../../interfaces/photo';
   providers: [KeyValuePipe]
 })
 export class PopularCountryComponent{
-  @Input() countryItem!: country;
-  @Input() photoItem!: photo;
+  @Input() countryItem!: country | undefined;
+  @Input() photoItem!: photo | undefined;
+
 }

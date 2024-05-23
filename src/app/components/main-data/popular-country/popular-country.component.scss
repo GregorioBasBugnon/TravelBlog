@@ -1,3 +1,18 @@
+// Variables
+@mixin icon-center {
+  align-items: center;
+  justify-content: center;
+}
+@mixin icon-style($size) {
+  color: #000000;
+  font-size: $size;
+}
+@mixin icon-style-hover($size, $weight) {
+  color: #000000;
+  font-size: $size;
+  font-weight: $weight;
+}
+
 /* ACTIVITIES */
 
 .image-container {
@@ -5,7 +20,9 @@
   margin-bottom: 10px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 3px;
   border-radius: 10px;
-  display: inline;
+  background-color: rgb(173, 236, 236);
+  height: 100%;
+  display: flex;
 }
 
 .image-container img {
@@ -25,14 +42,17 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    180deg,
-    transparent,
-    transparent,
-    rgba(162, 162, 187, 0.5)
-  );
   border-radius: 10px;
   transition: all 0.5s linear;
+  &.overlay-error {
+    @include icon-center();
+  }
+  .bx-wifi-off {
+    @include icon-style(45px);
+  }
+  .bx-wifi-off:hover {
+    @include icon-style-hover(50px, 700);
+  }
 }
 
 .image-container:hover .overlay {

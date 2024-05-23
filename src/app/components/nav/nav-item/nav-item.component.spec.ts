@@ -10,8 +10,8 @@ describe('NavItemComponent', () => {
     await TestBed.configureTestingModule({
       imports: [NavItemComponent]
     })
-    .compileComponents();
-    
+      .compileComponents();
+
     fixture = TestBed.createComponent(NavItemComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

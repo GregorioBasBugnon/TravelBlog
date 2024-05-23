@@ -1,4 +1,5 @@
 <div class="card review-card">
+  @if (contact != undefined) {
   <h2>{{contact.name.first}} {{contact.name.last}}</h2>
   <p><i>{{contact.email}}</i></p>
   <div class="ratings">
@@ -11,4 +12,15 @@
     {{description}}
   </p>
   <small>{{timeWriter}}</small>
+  } @else {
+  <h2>Opinión Desconocida</h2>
+  <p><i>username&#64;email.com</i></p>
+  <div class="ratings error">
+    <i class="bx bx-star"></i>
+    <i class="bx bx-star"></i>
+    <i class="bx bx-star"></i>
+    <i class="bx bx-star"></i>
+    <i class="bx bx-star"></i>
+  </div>
+  }
 </div>

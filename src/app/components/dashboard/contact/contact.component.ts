@@ -9,5 +9,5 @@ import { person } from '../../../interfaces/person';
   styleUrl: './contact.component.scss'
 })
 export class ContactComponent {
-  @Input() contact!: person;
+  @Input() contact!: person | undefined;
 }

@@ -1,35 +1,66 @@
+// Variables
+$header-height: 360px;
+$header-z-index: 10;
+$header-banner-bg-color: #333;
+$header-h1-bg-color: rgba(18, 72, 120, 0.8);
+$header-h1-color: #fff;
+$header-h1-padding: 0 1rem;
+$header-h1-top: 2rem;
+$header-h1-left: 2rem;
 
-header {
-  height: 360px;
-  z-index: 10;
+@mixin icon-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@mixin icon-style($size) {
+  color: #000000;
+  font-size: $size;
+}
+@mixin icon-style-hover($size, $weight) {
+  color: #000000;
+  font-size: $size;
+  font-weight: $weight;
 }
 
-body { margin:0px; padding:0px; }
+// HEADER
+header {
+  height: $header-height;
+  z-index: $header-z-index;
 
+  h1 {
+    background-color: $header-h1-bg-color;
+    color: $header-h1-color;
+    padding: $header-h1-padding;
+    top: $header-h1-top;
+    left: $header-h1-left;
+    margin: 0;
+  }
+}
+
+// HEADER BANNER
 .header-banner {
-  background-color: #333;
-  // background-image: url('https://37.media.tumblr.com/8b4969985e84b2aa1ac8d3449475f1af/tumblr_n3iftvUesn1snvqtdo1_1280.jpg');
+  background-color: $header-banner-bg-color;
+  //background default, background-image: url('https://37.media.tumblr.com/8b4969985e84b2aa1ac8d3449475f1af/tumblr_n3iftvUesn1snvqtdo1_1280.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
   height: 300px;
+  .banner-error {
+    background-color: rgb(173, 236, 236);
+    height: 90%;
+    @include icon-center();
+    .bx-wifi-off {
+      @include icon-style(120px);
+    }
+    .bx-wifi-off:hover {
+      @include icon-style-hover(130px, 700);
+    }
+  }
 }
 
-header h1 {
-  background-color: rgba(18,72,120, 0.8);
-  color: #fff;
-  padding: 0 1rem;
-  top: 2rem;
-  left: 2rem;
-}
-
-app-header-child{
+// APP HEADER CHILD
+app-header-child {
   display: inline;
 }
-
-
-
-
-
-

@@ -11,12 +11,17 @@
   </div>
 
   <div class="user-info">
+    @if (user != undefined) {
     <h4>{{user.results[0].name.first}} {{user.results[0].name.last}}</h4>
-    <img src="{{user.results[0].picture.medium}}"
-      alt="user" />
+    <img src="{{user.results[0].picture.medium}}" alt="user" />
+    }
+    @else {
+    <h4>Usuario Desconocido</h4>
+    <div class="user-error">
+      <i class="fa-solid fa-user-ninja"></i>
+    </div>
+    }
     <div class="icon-container">
-      <!-- <i class="fa fa-bell nav-icon"></i>
-        <i class="fa fa-message nav-icon"></i> -->
       <i class="fa-regular fa-envelope notified"></i>
       <i class="fa-regular fa-bell notified"></i>
       <div class="toggle-mode hidden" (click)="switchTheme()">
