@@ -1,35 +1,46 @@
 <div class="header-child">
   <div class="title">
-    <h1>AgeTraveling</h1>
+    <h1><a href="">AgeTraveling</a></h1>
   </div>
 
   <div class="search-and-check">
     <form class="search-box">
-      <input type="text" placeholder="Search event..." />
-      <i class="bx bx-search"></i>
+      <input type="text" placeholder="Busqué..." (click)="changeSearchInput()" />
+      <div class="icon-search" (click)="changeSearchComplete()">
+        <i class="bx bx-search"></i>
+      </div>
     </form>
   </div>
 
   <div class="user-info">
-    @if (user != undefined) {
-    <h4>{{user.results[0].name.first}} {{user.results[0].name.last}}</h4>
-    <img src="{{user.results[0].picture.medium}}" alt="user" />
-    }
-    @else {
-    <h4>Usuario Desconocido</h4>
-    <div class="user-error">
-      <i class="fa-solid fa-user-ninja"></i>
-    </div>
-    }
-    <div class="icon-container">
-      <i class="fa-regular fa-envelope notified"></i>
-      <i class="fa-regular fa-bell notified"></i>
-      <div class="toggle-mode hidden" (click)="switchTheme()">
-        <div class="mode-icon moon">
-          <i class="bx bxs-moon"></i>
-        </div>
-        <div class="mode-icon sun hidden">
-          <i class="bx bxs-sun"></i>
+    <div class="user-data">
+      @if (user != undefined) {
+      <h4>{{user.results[0].name.first}} {{user.results[0].name.last}}</h4>
+      <img src="{{user.results[0].picture.medium}}" alt="user" />
+      }
+      @else {
+      @if( this.loading){
+      <h4>Usuario Desconocido</h4>
+      <div class="user-error">
+        <app-loading-view></app-loading-view>
+      </div>
+      } @else {
+      <h4>Usuario en carga</h4>
+      <div class="user-error">
+        <i class="fa-solid fa-user-ninja"></i>
+      </div>
+      }
+      }
+      <div class="icon-container">
+        <i class="fa-regular fa-envelope notified"></i>
+        <i class="fa-regular fa-bell notified"></i>
+        <div class="toggle-mode hidden" (click)="switchTheme()">
+          <div class="mode-icon moon">
+            <i class="bx bxs-moon"></i>
+          </div>
+          <div class="mode-icon sun hidden">
+            <i class="bx bxs-sun hidden"></i>
+          </div>
         </div>
       </div>
     </div>

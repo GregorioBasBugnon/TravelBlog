@@ -4,16 +4,15 @@ import { Observable } from 'rxjs';
 import { environmentCountries } from '../../../../environments/environment.development';
 import { country } from '../../../interfaces/country';
 
-const countryId = 'new zealand';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CountryService {
 
-  constructor(private http: HttpClient) { countryId }
+  constructor(private http: HttpClient) { }
 
-  getCountrie(): Observable<country> {
+  getCountrie(countryId: string): Observable<country> {
     return this.http.get<country>(`${environmentCountries.urlBase}name/${countryId}?fullText=true`);
   }
   getCountries(): Observable<country[]> {

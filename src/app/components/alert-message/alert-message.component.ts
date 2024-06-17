@@ -22,7 +22,7 @@ export class AlertMessageComponent {
 
   ngOnInit(): void {
     this.initializeAlertElements();
-    this.startpAlertTimer();
+    this.startAlertTimer();
   }
 
   private initializeAlertElements(): void {
@@ -31,7 +31,7 @@ export class AlertMessageComponent {
       this.progress = document.querySelector(".progress") as HTMLElement;
     }
   }
-  private startpAlertTimer(): void {
+  private startAlertTimer(): void {
     if (this.alert) {
       this.subscription = timer(1000).subscribe(() => {
         this.alert?.classList.add("active");

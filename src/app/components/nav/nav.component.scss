@@ -6,8 +6,7 @@ $font-family: "Roboto", sans-serif;
 .main-menu {
   overflow: hidden;
   background: $main-menu-background;
-  padding-top: 10px;
-  border-radius: 15px 0 0 15px;
+  border-radius: 0 10px 10px 0;
   font-family: $font-family;
 
   @media (max-width: 1250px) {
@@ -22,12 +21,13 @@ $font-family: "Roboto", sans-serif;
   @media (max-width: 738px) {
     position: fixed;
     z-index: 1;
-    width: 97%;
-    top: 730px;
+    width: 100%;
+    top: 754px;
     padding-top: 0;
-    border-radius: 5px;
+    border-radius: 10px 10px 0 0;
 
     ul {
+      margin: 10px 0 10px 0;
       padding-left: 35px;
       padding-right: 35px;
       flex-direction: row;

@@ -7,7 +7,11 @@
   }@else {
   <div class="country-travel">
     <div class="overlay overlay-error">
+      @if( this.loading){
+      <app-loading-view></app-loading-view>
+      } @else {
       <i class='bx bx-wifi-off'></i>
+      }
     </div>
   </div>
   }

@@ -6,10 +6,18 @@
         {{contact.location.country}}</span></p>
     }
     @else {
+    @if( this.loading){
+      <div class="user-error">
+        <app-loading-view></app-loading-view>
+      </div>
+      <p>En proceso los Contactos</p>
+    } @else {
     <div class="user-error">
       <i class="fa-solid fa-user-ninja"></i>
     </div>
     <p><span>Sin información </span>de Contacto</p>
     }
+    }
+
   </div>
 </div>

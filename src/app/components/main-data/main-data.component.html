@@ -7,30 +7,37 @@
       }
     </ng-container>
     } @else {
-    <ng-container *ngFor="let item of sizePhoto">
-      <app-collage-picture [photo]="photoVoid"></app-collage-picture>
+    <ng-container>
+      @for( item of amountPhoto; track item;){
+      <ng-container>
+        <app-collage-picture [photo]="photoVoid"></app-collage-picture>
+      </ng-container>
+      }
     </ng-container>
     }
+
   </div>
   <div class="popular">
     <h1>Paises Populares</h1>
     <div class="popular-container">
-      @if(countryPopularResult | async; as country){
-      @if(photoByCountrieResult | async; as photo){
-      <ng-container>
-        @for(item of country; track item; let i = $index){
+      <ng-container *ngIf="countryPopularResult | async as country; else errorCountry">
+        <ng-container *ngIf="photoByCountrieResult | async as photo; else errorCountry">
+          @for(item of country; track item; let i = $index){
+          <ng-container>
+            @if(i < 5){ <app-popular-country [countryItem]="item" [photoItem]="photo.photos[i]"></app-popular-country>
+              }
+          </ng-container>
+          }
+        </ng-container>
+      </ng-container>
+
+      <ng-template #errorCountry>
+        @for( item of amountCountry; track item;){
         <ng-container>
-          @if(i < 5){ <app-popular-country [countryItem]="item" [photoItem]="photo.photos[i]"></app-popular-country>
-            }
+          <app-popular-country [countryItem]="countryVoid" [photoItem]="photoVoid"></app-popular-country>
         </ng-container>
         }
-      </ng-container>
-      }
-      } @else {
-      <ng-container *ngFor="let item of sizeCountry">
-        <app-popular-country [countryItem]="countryVoid" [photoItem]="photoVoid"></app-popular-country>
-      </ng-container>
-      }
+      </ng-template>
 
     </div>
   </div>

@@ -31,11 +31,12 @@ $nav-background: rgb(73, 57, 113);
 
   &:hover:not(.active):hover {
     a {
-      border-top-left-radius: 15px;
-      border-bottom-left-radius: 15px;
+      border-top-left-radius: 18px;
+      border-bottom-left-radius: 18px;
       background-color: $nav-item-background;
       animation: $hover-animation;
       text-decoration: none;
+       z-index: 1;
     }
   }
 
@@ -141,15 +142,15 @@ $nav-background: rgb(73, 57, 113);
 
     a {
       flex-direction: column;
-      padding-top: 12px;
-      padding-bottom: 12px;
+      padding-top: 8px;
+      padding-bottom: 6px;
 
       i {
-        font-size: 24px;
+        font-size: 19px;
       }
 
       span {
-        margin-top: 10px;
+        margin-top: 7.5px;
         font-size: small;
         width: 75px;
         display: flex;
@@ -162,15 +163,16 @@ $nav-background: rgb(73, 57, 113);
 @media (max-width: 500px) {
   .nav-item {
     a {
+      width: 70px;
       margin: 0px;
       padding-top: 10px;
-      padding-bottom: 10px;
+      padding-bottom: 8px;
       i {
         font-size: 18px;
       }
 
       span {
-        margin-top: 7px;
+        margin-top: 3px;
         font-size: small;
       }
     }

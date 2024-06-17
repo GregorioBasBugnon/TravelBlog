@@ -3,7 +3,11 @@
   <p class="author-photo">{{photo.photographer}}</p>
 </div>
 }@else {
-  <div class="item error" tabindex="0">
-    <i class='bx bx-wifi-off'></i>
-  </div>
+<div class="item error" tabindex="0">
+  @if( this.loading){
+  <app-loading-view></app-loading-view>
+  } @else {
+  <i class='bx bx-wifi-off'></i>
   }
+</div>
+}

@@ -8,8 +8,11 @@
   <div class="header-banner">
     <h1>AgeTraveling</h1>
     <div class="banner-error">
-      <i class='bx bx-wifi-off'></i>
-    </div>
+      @if( this.loading){
+        <app-loading-view></app-loading-view>
+        } @else {
+        <i class='bx bx-wifi-off'></i>
+        }    </div>
   </div>
   }
 

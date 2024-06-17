@@ -23,8 +23,8 @@ export class MainDataComponent {
   countryVoid: country | undefined;
   photoVoid: photo | undefined;
   personVoid: person | undefined;
-  sizeCountry = [0, 1, 2, 3, 4];
-  sizePhoto = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+  amountCountry = [0, 1, 2, 3, 4];
+  amountPhoto = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 }
 

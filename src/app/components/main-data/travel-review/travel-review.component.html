@@ -1,6 +1,6 @@
 <div class="card review-card">
   @if (contact != undefined) {
-  <h2>{{contact.name.first}} {{contact.name.last}}</h2>
+  <h3>{{contact.name.first}} {{contact.name.last}}</h3>
   <p><i>{{contact.email}}</i></p>
   <div class="ratings">
     @for(item of appreciation; track item; let i = $index){
@@ -13,7 +13,7 @@
   </p>
   <small>{{timeWriter}}</small>
   } @else {
-  <h2>Opinión Desconocida</h2>
+  <h3>Opinión Desconocida</h3>
   <p><i>username&#64;email.com</i></p>
   <div class="ratings error">
     <i class="bx bx-star"></i>

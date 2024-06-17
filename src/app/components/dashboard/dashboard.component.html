@@ -3,7 +3,8 @@
   <div class="containers-weather">
     @if(weatherTodayResult | async; as weather){
     <app-city-weather [weather]="weather" [cityName]="cityName"></app-city-weather>
-    } @else{
+    }
+    @else{
     <app-city-weather [weather]="weatherVoid" [cityName]="cityName"></app-city-weather>
     }
   </div>

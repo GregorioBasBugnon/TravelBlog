@@ -1,5 +1,9 @@
 // Variables
 $header-height: 360px;
+$header-height-tablet: 320px;
+$header-height-mobile-large: 280px;
+$header-height-mobile-mediumm: 250px;
+
 $header-z-index: 10;
 $header-banner-bg-color: #333;
 $header-h1-bg-color: rgba(18, 72, 120, 0.8);
@@ -28,6 +32,15 @@ header {
   height: $header-height;
   z-index: $header-z-index;
 
+  @media (max-width: 1250px) {
+    height: $header-height-tablet;
+  }
+  @media (max-width:768px) {
+    height: $header-height-mobile-large;
+  }
+  @media (max-width:500px) {
+    height: $header-height-mobile-mediumm;
+  }
   h1 {
     background-color: $header-h1-bg-color;
     color: $header-h1-color;
@@ -57,6 +70,15 @@ header {
     .bx-wifi-off:hover {
       @include icon-style-hover(130px, 700);
     }
+  }
+  @media (max-width: 1250px) {
+    height: 260px;
+  }
+  @media (max-width: 768px) {
+    height: 220px;
+  }
+  @media (max-width:500px) {
+    height: 190px;
   }
 }
 

@@ -8,18 +8,25 @@ $box-shadow: 0 0.5px 0 1px rgba(255, 255, 255, 0.23) inset,
   grid-template-columns: $columns;
 }
 
+// NAV
+app-nav{
+  display: contents;
+}
+
 // BODY MAIN
 .body-main {
   @include grid-template(15% 85%);
   width: 100%;
-  margin-top: 20px;
-  background: $body-background;
-  box-shadow: $box-shadow;
   border-radius: 15px;
   z-index: 10;
 
+  .content-main {
+    background: $body-background;
+    box-shadow: $box-shadow;
+    margin-top: 12px;
+  }
   @media (max-width: 1250px) {
-    @include grid-template(20% 80%);
+    @include grid-template(24% 76%);
   }
 
   @media (max-width: 738px) {

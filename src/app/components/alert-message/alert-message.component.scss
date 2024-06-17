@@ -7,7 +7,7 @@
 
 .alert {
   position: absolute;
-  top: 735px;
+  top: 740px;
   right: 26px;
   border-radius: 12px;
   background: #fff;
@@ -29,6 +29,7 @@
     transition: all 0.5s cubic-bezier(0.6, -0.28, 0.74, 0.05);
     display: inherit;
     z-index: 1;
+    right: 8px;
   }
 
   .alert-content {
@@ -44,7 +45,7 @@
       background-color: #baba46;
       color: #fff;
       font-size: 20px;
-      border-radius: 50%;
+      border-radius: 65px;
     }
 
     .message {
@@ -101,6 +102,35 @@
       height: 130%;
       width: 100%;
       background-color: #ddd;
+    }
+  }
+}
+
+@media (max-width: 738px) {
+  .alert {
+    top: 6px;
+    padding: 18px 25px 18px 20px;
+    z-index: 100;
+    &.scroll-alert {
+      top: 66px;
+    }
+    .alert-content {
+      .check {
+        height: 26px;
+        width: 26px;
+        font-size: 16.5px;
+        border-radius: 95px;
+      }
+
+      .message {
+        margin: 0 15px;
+        .description {
+          font-size: 13.5px;
+        }
+      }
+    }
+    .close {
+      font-size: 19px;
     }
   }
 }

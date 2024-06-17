@@ -27,7 +27,7 @@ $item-background-hover: rgb(134, 235, 235);
 }
 
 .item {
-  width: calc(var(--index) * 3);
+  width: calc(var(--index) * 3.1);
   height: calc(var(--index) * 12);
   background-size: cover;
   background-position: center;
@@ -64,70 +64,17 @@ $item-background-hover: rgb(134, 235, 235);
   }
 
   &:hover {
-    filter: inherit;
     transform: translateZ(calc(var(--index) * 8));
-    background-color: $item-background-hover;
-  }
-
-  &:hover + * {
-    filter: inherit;
-    transform: translateZ(calc(var(--index) * 6)) rotateY(25deg);
-    z-index: -1;
-    background-color: $item-background-hover;
-  }
-
-  &:hover + * + * {
-    filter: inherit;
-    transform: translateZ(calc(var(--index) * 3.5)) rotateY(20deg);
-    z-index: -2;
-    background-color: $item-background-hover;
-  }
-
-  &:hover + * + * + * {
-    filter: inherit;
-    transform: translateZ(calc(var(--index) * 1.7)) rotateY(15deg);
-    z-index: -3;
-    background-color: $item-background-hover;
-  }
-
-  &:hover + * + * + * + * {
-    filter: inherit;
-    transform: translateZ(calc(var(--index) * 0.5)) rotateY(5deg);
-    z-index: -4;
-    background-color: $item-background-hover;
-  }
-
-  &:has(+ :hover) {
-    filter: inherit;
-    transform: translateZ(calc(var(--index) * 6)) rotateY(-25deg);
-    background-color: $item-background-hover;
-  }
-
-  &:has(+ * + :hover) {
-    filter: inherit;
-    transform: translateZ(calc(var(--index) * 3.5)) rotateY(-20deg);
-    background-color: $item-background-hover;
-  }
-
-  &:has(+ * + * + :hover) {
-    filter: inherit;
-    transform: translateZ(calc(var(--index) * 1.7)) rotateY(-15deg);
-    background-color: $item-background-hover;
-  }
-
-  &:has(+ * + * + * + :hover) {
-    filter: inherit;
-    transform: translateZ(calc(var(--index) * 0.5)) rotateY(-5deg);
     background-color: $item-background-hover;
   }
 
   &:active,
   &:focus {
     width: 15vw;
-    filter: inherit;
-    z-index: 100;
-    transform: translateZ(calc(var(--index) * 12));
     margin: 0 0.35vw;
+    @media (max-width: 738px) {
+      width: 22vw;
+    }
   }
 
   &:focus {
@@ -142,5 +89,19 @@ $item-background-hover: rgb(134, 235, 235);
     background: rgba(248, 251, 250, 0.91);
     border-radius: 0.05em;
     display: none;
+  }
+
+@media (max-width: 1250px) {
+    width: calc(var(--index)* 4.3);
+    height: calc(var(--index)* 17);
+  }
+
+  @media (max-width: 738px) {
+    width: calc(var(--index)* 4.55);
+    height: calc(var(--index)* 17.3);
+  }
+  @media (max-width: 500px) {
+    width: calc(var(--index)* 4.5);
+    height: calc(var(--index)* 20.5);
   }
 }

@@ -3,3 +3,21 @@
 h1 {
   margin: 20px 0;
 }
+@media (max-width: 1250px) {
+  .dashboard-content {
+    display: block;
+    margin: 5px 15px 15px 15px;
+    padding: 10px 20px 20px 20px;
+    h1 {
+      margin: 13px 0 20px 0px;
+    }
+  }
+}
+
+// Contacts
+.contacts {
+  margin: 65px 0 60px 4%;
+  @media (min-width: 1250px) {
+    padding-left: 3.5%;
+  }
+}

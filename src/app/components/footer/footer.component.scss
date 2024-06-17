@@ -6,10 +6,26 @@
   line-height: 24px;
   color: #737373;
 
+  .start-footer {
+    .header-site-footer,
+    .body-site-footer {
+      padding: 0 15px 0 15px;
+    }
+    .header-site-footer {
+      width: 60%;
+    }
+
+    .body-site-footer {
+      display: flex;
+      justify-content: space-between;
+      .mentions {
+        padding: 0 90px 0 30px;
+      }
+    }
+  }
   .start-footer,
   .end-footer {
     display: flex;
-    margin: 0 auto;
     padding: 2%;
     justify-content: space-between;
   }
@@ -19,7 +35,7 @@
     opacity: 0.5;
 
     &.small {
-      margin: 20px 0;
+      margin: 10px 0;
     }
   }
 
@@ -40,7 +56,8 @@
     }
   }
 
-  .footer-links {
+  .footer-links,
+  .footer-mentions {
     padding-left: 0;
     list-style: none;
 
@@ -90,11 +107,13 @@
         line-height: 44px;
         width: 44px;
         height: 44px;
-        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         margin-right: 8px;
         border-radius: 100%;
         transition: all 0.2s linear;
-
+        text-decoration: none;
         &.facebook:hover {
           background-color: #3b5998;
         }
@@ -107,8 +126,8 @@
           background-color: #007bb6;
         }
 
-        &.dribbble:hover {
-          background-color: #ea4c89;
+        &.instagram:hover {
+          background-color: #9317a9;
         }
 
         &:active,
@@ -128,12 +147,51 @@
         }
       }
     }
+  }
+  @media (max-width: 767px) {
+    margin-bottom: 70px;
+    .start-footer, .end-footer {
+      display: inherit;
+      padding: 2% 2% 2% 0;
+    }
+    .description {
+      padding-left: 32px;
+    }
 
-    @media (max-width: 767px) {
-      li.title {
-        display: block;
-        margin-right: 0;
-        font-weight: 600;
+    .copyright-text {
+      font-size: 12px;
+    }
+    .social-icons li a {
+      width: 35px;
+      height: 35px;
+    }
+  }
+
+  @media (max-width: 500px) {
+    height: 880px;
+    font-size: 14px;
+    h6 {
+      font-size: 13px;
+      margin-bottom: 15px;
+    }
+    .body-site-footer {
+      margin-top: 50px;
+    }
+    .end-footer {
+      display: inherit;
+      .copyright {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+      }
+      .social-media {
+        .social-icons {
+          text-align: inherit;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
       }
     }
   }

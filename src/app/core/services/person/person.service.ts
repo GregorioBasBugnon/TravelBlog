@@ -4,9 +4,6 @@ import { environmentPerson } from '../../../../environments/environment.developm
 import { peopleList } from '../../../interfaces/person';
 import { Observable } from 'rxjs';
 
-
-const results = '3';
-
 const httpHeader = {
   headers: new HttpHeaders({
     Authorization: `${environmentPerson.Authorization}`
