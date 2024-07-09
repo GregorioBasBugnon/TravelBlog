@@ -52,15 +52,18 @@ app-collage-picture {
   &:hover {
     z-index: 2;
   }
-  @media (max-width: 1250px) {
+  @media (max-width: 1500px) {
     &:nth-child(1),
-    &:nth-child(5),
+    &:nth-child(5) {
+      display: none;
+    }
+  }
+  @media (max-width: 1250px) {
     &:nth-child(10) {
       display: none;
     }
   }
   @media (max-width: 500px) {
-    &:nth-child(5),
     &:nth-child(3) {
       display: none;
     }
@@ -70,7 +73,6 @@ app-collage-picture {
 // Populated country
 .popular h1 {
   margin: 0 0 20px;
-  font-size: 1.4rem;
   font-weight: 700;
 }
 

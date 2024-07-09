@@ -60,8 +60,6 @@ export class MainMenuComponent implements OnInit {
         return EMPTY;
       })),
 
-      // background red theme, this.photoTitleResult$ = this.mediaService.getPhotosById(22717472).pipe(catchError((error: string) => {
-      // background blue theme, this.photoTitleResult$ = this.mediaService.getPhotosById(22702771).pipe(catchError((error: string) => {
       this.photoTitleResult$ = this.mediaService.getPhotosById(21967469).pipe(catchError((error: string) => {
         this.errorMessage = error;
         return EMPTY;
@@ -77,7 +75,7 @@ export class MainMenuComponent implements OnInit {
         return EMPTY;
       })),
 
-      this.city = "Santa Cruz de Tenerife";
+      this.city = "Madrid";
     this.weatherTodayResult$ = this.weatherService.getWeatherToday(this.city, "current").pipe(catchError((error: string) => {
       this.errorMessage = error;
       return EMPTY;

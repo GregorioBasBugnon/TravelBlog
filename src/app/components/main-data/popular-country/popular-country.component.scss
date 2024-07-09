@@ -47,10 +47,10 @@
   &.overlay-error {
     @include icon-center();
   }
-  .bx-wifi-off {
+  .bxs-file-image {
     @include icon-style(45px);
   }
-  .bx-wifi-off:hover {
+  .bxs-file-image:hover {
     @include icon-style-hover(50px, 700);
   }
 }
@@ -59,8 +59,16 @@
   opacity: 0;
 }
 
-.overlay h3 {
+.overlay p {
   margin-bottom: 8px;
   margin-right: 10px;
   color: #fff;
+  font-size: 1.17em;
+  font-weight: bold;
+  text-align: end;
+
+  @media (max-width: 1000px) {
+    font-size: 1em;
+    font-weight: 600;
+  }
 }

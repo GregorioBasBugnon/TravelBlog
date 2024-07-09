@@ -1,14 +1,14 @@
 <div class="active-weather">
   @if (weather != undefined) {
   <div class="active-weather-container">
-
     <div class="box">
+      <div class="gradient-trapeze"></div>
       <img src="../../../../assets/image/weather/{{imgWeather}}.png" alt="imagen de {{weatherSpanish}}"
         id="img-weather">
-      <p>{{weather.current.temperature}}º</p>
+      <p id="degree-temperature">{{weather.current.temperature}}º</p>
     </div>
     <div class="weather-content">
-      <p id="city-name"><span>Ciudad:</span> {{cityName}}</p>
+      <p id="city-name"><span>Ciudad: </span>{{cityName}}</p>
       <p><span>Tiempo:</span> {{weatherSpanish}}</p>
       <p><span>Velocidad de Viento:</span> {{weather.current.wind.speed}}</p>
       <p><span>Probab. Precipitación:</span> {{weather.current.precipitation.total}}%</p>
@@ -20,7 +20,7 @@
     <div class="box">
       <div class="uknow-weather-text">
         <p>Tiempo desconocido en la ciudad </p>
-        <p class="cityName">{{cityName}}</p>
+        <p class="city-name-title">{{cityName}}</p>
       </div>
     </div>
     <div class="uknow-weather-content">

@@ -1,6 +1,6 @@
 <div class="card review-card">
   @if (contact != undefined) {
-  <h3>{{contact.name.first}} {{contact.name.last}}</h3>
+  <p class="userName">{{contact.name.first}} {{contact.name.last}}</p>
   <p><i>{{contact.email}}</i></p>
   <div class="ratings">
     @for(item of appreciation; track item; let i = $index){

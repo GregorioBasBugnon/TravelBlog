@@ -1,9 +1,14 @@
+// Variables
+$background-city-weather: rgb(214, 227, 248);
+$background-radient-grade: rgb(174, 238, 238);
+$background-effect-grade: rgb(55, 217, 217);
+
 // Active Weather
 .active-weather {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: rgb(214, 227, 248);
+  background-color: $background-city-weather;
   padding: 0 10px;
   margin: 15px 10px 0;
   border-radius: 15px;
@@ -18,7 +23,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 10px;
+    gap: 33px;
     padding: 23px;
 
     &.uknow-weather {
@@ -44,7 +49,7 @@
               font-size: 1.05rem;
             }
           }
-          .cityName {
+          .city-name-title {
             margin-bottom: 1em;
             margin-top: 0;
             margin-bottom: 6px;
@@ -72,6 +77,7 @@
           padding-right: 8%;
         }
         .weather-content {
+          margin-top: 10px;
           p {
             &:nth-child(1) {
               margin: 0;
@@ -90,19 +96,69 @@
           font-weight: 720;
         }
       }
+      #city-name {
+        text-decoration: underline;
+        text-decoration-color: $background-city-weather;
+        text-decoration-thickness: 1.5px;
+        span{
+          text-decoration: underline;
+          text-decoration-color: $background-city-weather;
+          text-decoration-thickness: 1.5px;
+        }
+      }
     }
 
     .box {
+      padding: 10px 0;
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
       position: relative;
-      padding: 10px 0;
+      z-index: 10;
+
+      .gradient-trapeze,
+      .gradient-trapeze::before,
+      .gradient-trapeze::after {
+        position: absolute;
+        z-index: -1;
+      }
+      .gradient-trapeze {
+        background: linear-gradient(
+          7deg,
+          $background-radient-grade 7%,
+          $background-effect-grade 72%
+        );
+        border-radius: 100px;
+        box-shadow: $background-radient-grade 0px 1px 10px,
+          $background-radient-grade 0px 4px 2px,
+          $background-radient-grade 0px 8px 4px,
+          $background-radient-grade 0px 16px 8px,
+          $background-radient-grade 0px 32px 16px;
+        width: 107px;
+        height: 80px;
+      }
+      .gradient-trapeze::before,
+      .gradient-trapeze::after {
+        content: "";
+        width: 61px;
+        height: 0px;
+        border-top: 150px solid $background-city-weather;
+        box-sizing: border-box;
+        top: -3px;
+      }
+      .gradient-trapeze::before {
+        border-left: 85px solid transparent;
+        right: -9px;
+      }
+      .gradient-trapeze::after {
+        left: -9px;
+        border-right: 85px solid transparent;
+      }
+
       #img-weather {
         width: 100px;
         height: 100px;
-        padding-right: 26%;
       }
       p {
         position: relative;
@@ -110,14 +166,22 @@
         font-size: 1.35rem;
         color: rgb(91, 95, 111);
         font-weight: 600;
-        margin: 9px 13px 0 0;
+        margin: 11px 0 0 0;
+
+        &#degree-temperature {
+          border-left: 3px solid #ffffffb9;
+          border-right: 3px solid #ffffffb9;
+          border-radius: 20px;
+          padding: 3.5px 7px 3.5px 7px;
+          background-color: #ffffff42;
+        }
       }
 
       .circle::before {
         content: "";
         position: absolute;
         inset: 10px;
-        background-color: rgb(214, 227, 248);
+        background-color: $background-city-weather;
         border-radius: 50%;
       }
     }

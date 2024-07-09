@@ -1,9 +1,27 @@
+@if (navItemOut) {
+@if (navState) {
+<li class="nav-item nav-item-out active">
+  <a href="#">
+    <i class="bx {{navIcon}} nav-icon"></i>
+    <span class="nav-text">{{navText}}</span>
+  </a>
+</li>
+} @else {
+<li class="nav-item nav-item-out">
+  <a href="#">
+    <i class="bx {{navIcon}} nav-icon"></i>
+    <span class="nav-text">{{navText}}</span>
+  </a>
+</li>
+}
+}
+@else {
 @if (navState) {
 <li class="nav-item active">
   <b></b>
   <b></b>
   <a href="#">
-    <i class="fa fa-{{navIcon}} nav-icon"></i>
+    <i class="bx {{navIcon}} nav-icon"></i>
     <span class="nav-text">{{navText}}</span>
   </a>
 </li>
@@ -12,8 +30,9 @@
   <b></b>
   <b></b>
   <a href="#">
-    <i class="fa fa-{{navIcon}} nav-icon"></i>
+    <i class="bx {{navIcon}} nav-icon"></i>
     <span class="nav-text">{{navText}}</span>
   </a>
 </li>
+}
 }

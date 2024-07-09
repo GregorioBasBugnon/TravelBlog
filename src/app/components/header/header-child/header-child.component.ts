@@ -3,11 +3,11 @@ import { peopleList } from '../../../interfaces/person';
 import { LoadingViewComponent } from '../../loading-view/loading-view.component';
 
 @Component({
-    selector: 'app-header-child',
-    standalone: true,
-    templateUrl: './header-child.component.html',
-    styleUrl: './header-child.component.scss',
-    imports: [LoadingViewComponent]
+  selector: 'app-header-child',
+  standalone: true,
+  templateUrl: './header-child.component.html',
+  styleUrl: './header-child.component.scss',
+  imports: [LoadingViewComponent]
 })
 export class HeaderChildComponent extends LoadingViewComponent {
   @Input() user!: peopleList | undefined;
@@ -55,6 +55,10 @@ export class HeaderChildComponent extends LoadingViewComponent {
     this.headerChild.classList.add("search-complete");
   }
 
+  hideBackArrow() {
+    this.headerChild.classList.remove("search-complete");
+  }
+
   private fixeHeader(): void {
     if (typeof window !== 'undefined') {
       window.addEventListener('scroll', () => {
@@ -63,14 +67,18 @@ export class HeaderChildComponent extends LoadingViewComponent {
             this.headerChild.classList.add('fixed-header');
             this.headerChild.classList.remove('scroll-out');
             this.title.classList.add('visible-title');
-            this.alert.classList.add('scroll-alert')
+            if (this.alert != null) {
+              this.alert.classList.add('scroll-alert')
+            }
           }
         } else {
           if (this.headerChild && this.title) {
             this.headerChild.classList.remove('fixed-header');
             this.headerChild.classList.add('scroll-out');
             this.title.classList.remove('visible-title');
-            this.alert.classList.remove('scroll-alert')
+            if (this.alert != null) {
+              this.alert.classList.remove('scroll-alert')
+            }
           }
         }
       });

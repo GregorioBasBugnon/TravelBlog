@@ -3,15 +3,35 @@ $header-height: 360px;
 $header-height-tablet: 320px;
 $header-height-mobile-large: 280px;
 $header-height-mobile-mediumm: 250px;
-
+$title-font-size: "Caviar Dreams Bold";
 $header-z-index: 10;
 $header-banner-bg-color: #333;
-$header-h1-bg-color: rgba(18, 72, 120, 0.8);
+$header-title-bg: linear-gradient(
+  123deg,
+  rgba(12, 26, 34, 0.955) 10%,
+  rgba(12, 26, 34, 0.586) 31%,
+  rgba(252, 254, 255, 0.227) 63%
+);
+$header-title-height: 63px;
 $header-h1-color: #fff;
 $header-h1-padding: 0 1rem;
 $header-h1-top: 2rem;
 $header-h1-left: 2rem;
 
+@mixin alte-haas-grotesk-bold {
+  @font-face {
+    font-family: "Alte Haas Grotesk Bold";
+    src: url("../../../assets/fonts/Alte_Haas_Grotesk/AlteHaasGroteskBold.ttf");
+    font-weight: normal;
+  }
+}
+@mixin caviar-dreams-bold {
+  @font-face {
+    font-family: "Caviar Dreams Bold";
+    src: url("../../../assets/fonts/Caviar_Dreams/CaviarDreams_Bold.ttf");
+    font-weight: normal;
+  }
+}
 @mixin icon-center {
   display: flex;
   align-items: center;
@@ -27,6 +47,15 @@ $header-h1-left: 2rem;
   font-weight: $weight;
 }
 
+@mixin title-format($color) {
+  text-shadow: 0px 0px 0 $color, 0px 0px 0 $color, 1px 0px 0 $color, 0px 0px 0 $color,
+  1px 1px 0 $color;
+  font-weight: bolder;
+}
+
+@include alte-haas-grotesk-bold();
+@include caviar-dreams-bold();
+
 // HEADER
 header {
   height: $header-height;
@@ -35,54 +64,61 @@ header {
   @media (max-width: 1250px) {
     height: $header-height-tablet;
   }
-  @media (max-width:768px) {
+  @media (max-width: 768px) {
     height: $header-height-mobile-large;
   }
-  @media (max-width:500px) {
+  @media (max-width: 500px) {
     height: $header-height-mobile-mediumm;
   }
   h1 {
-    background-color: $header-h1-bg-color;
+    background: $header-title-bg;
     color: $header-h1-color;
     padding: $header-h1-padding;
     top: $header-h1-top;
     left: $header-h1-left;
     margin: 0;
+    font-family: $title-font-size;
+    @include title-format(rgb(1, 12, 18))
   }
-}
 
-// HEADER BANNER
-.header-banner {
-  background-color: $header-banner-bg-color;
-  //background default, background-image: url('https://37.media.tumblr.com/8b4969985e84b2aa1ac8d3449475f1af/tumblr_n3iftvUesn1snvqtdo1_1280.jpg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  width: 100%;
-  height: 300px;
-  .banner-error {
-    background-color: rgb(173, 236, 236);
-    height: 90%;
-    @include icon-center();
-    .bx-wifi-off {
-      @include icon-style(120px);
-    }
-    .bx-wifi-off:hover {
-      @include icon-style-hover(130px, 700);
-    }
-  }
-  @media (max-width: 1250px) {
-    height: 260px;
-  }
-  @media (max-width: 768px) {
-    height: 220px;
-  }
-  @media (max-width:500px) {
-    height: 190px;
-  }
-}
+  // HEADER BANNER
+  .header-banner {
+    background-color: $header-banner-bg-color;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 300px;
+    .banner-error {
+      background-color: rgb(173, 236, 236);
+      height: 90%;
 
-// APP HEADER CHILD
-app-header-child {
-  display: inline;
+      @include icon-center();
+      .bxs-file-image {
+        @include icon-style(120px);
+      }
+      .bxs-file-image:hover {
+        @include icon-style-hover(130px, 700);
+      }
+    }
+    @media (max-width: 1250px) {
+      height: 260px;
+    }
+    @media (max-width: 768px) {
+      height: 220px;
+    }
+    @media (max-width: 500px) {
+      height: 190px;
+    }
+    h1 {
+      height: $header-title-height;
+      align-items: center;
+      display: flex;
+    }
+  }
+
+  // APP HEADER CHILD
+  app-header-child {
+    display: inline;
+  }
 }

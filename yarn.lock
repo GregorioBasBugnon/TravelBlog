@@ -1651,7 +1651,7 @@
   "resolved" "https://registry.npmjs.org/@types/json-schema/-/json-schema-7.0.15.tgz"
   "version" "7.0.15"
 
-"@types/mime@*", "@types/mime@^4.0.0":
+"@types/mime@*":
   "integrity" "sha512-5eEkJZ/BLvTE3vXGKkWlyTSUVZuzj23Wj8PoyOq2lt5I3CYbiLBOPb3XmCW6QcuOibIUE6emHXHt9E/F/rCa6w=="
   "resolved" "https://registry.npmjs.org/@types/mime/-/mime-4.0.0.tgz"
   "version" "4.0.0"

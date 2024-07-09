@@ -4,12 +4,11 @@ $box-shadow: 0 0.5px 0 1px rgba(255, 255, 255, 0.23) inset,
   0 1px 0 0 rgba(255, 255, 255, 0.66) inset, 0 4px 16px rgba(0, 0, 0, 0.12);
 
 @mixin grid-template($columns) {
-  display: grid;
   grid-template-columns: $columns;
 }
 
 // NAV
-app-nav{
+app-nav {
   display: contents;
 }
 
@@ -19,28 +18,52 @@ app-nav{
   width: 100%;
   border-radius: 15px;
   z-index: 10;
+  display: grid;
+
+  @media (min-width: 1500px) {
+    &.hide-nav {
+      grid-template-columns: 5% 95% ;
+    }
+  }
+  @media (min-width: 1250px) and (max-width: 1500px) {
+    @include grid-template(19% 81%);
+    &.hide-nav {
+      grid-template-columns: 6% 95% ;
+    }
+  }
+  @media (max-width: 1250px) {
+    @include grid-template(24% 76%);
+  }
+  @media (max-width: 1250px) and (min-width: 1000px){
+    &.hide-nav {
+      grid-template-columns: 7% 88% ;
+    }
+  }
+  @media (max-width: 1000px) and (min-width: 768px){
+    &.hide-nav {
+      grid-template-columns: 9% 88% ;
+    }
+  }
+  @media (max-width: 738px) {
+    @include grid-template(100%);
+  }
 
   .content-main {
     background: $body-background;
     box-shadow: $box-shadow;
     margin-top: 12px;
-  }
-  @media (max-width: 1250px) {
-    @include grid-template(24% 76%);
-  }
+    display: grid;
 
-  @media (max-width: 738px) {
-    @include grid-template(100%);
-  }
-}
+    @include grid-template(70% 30%);
 
-.content-main {
-  @include grid-template(70% 30%);
-
-  @media (max-width: 1250px) {
-    left: 70px;
-    overflow: auto;
-    height: auto;
-    @include grid-template(100%);
+    @media (min-width: 1250px) and (max-width: 1500px) {
+      @include grid-template(65% 35%);
+    }
+    @media (max-width: 1250px) {
+      left: 70px;
+      overflow: auto;
+      height: auto;
+      @include grid-template(100%);
+    }
   }
 }

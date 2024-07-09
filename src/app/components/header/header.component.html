@@ -9,10 +9,11 @@
     <h1>AgeTraveling</h1>
     <div class="banner-error">
       @if( this.loading){
-        <app-loading-view></app-loading-view>
-        } @else {
-        <i class='bx bx-wifi-off'></i>
-        }    </div>
+      <app-loading-view></app-loading-view>
+      } @else {
+      <i class='bx bxs-file-image'></i>
+      }
+    </div>
   </div>
   }
 
@@ -20,7 +21,7 @@
   <app-header-child [user]="userLogin"></app-header-child>
   }
   @else {
-    <app-header-child [user]="personVoid"></app-header-child>
+  <app-header-child [user]="personVoid"></app-header-child>
 
   }
 </header>

@@ -1,5 +1,6 @@
 // Variables
 $item-background-hover: rgb(134, 235, 235);
+$author-photo-color: rgb(33, 36, 36);
 
 @mixin icon-center {
   align-items: center;
@@ -32,7 +33,6 @@ $item-background-hover: rgb(134, 235, 235);
   background-size: cover;
   background-position: center;
   cursor: pointer;
-  // filter: grayscale(1) brightness(0.8);
   transition: transform 1.25s var(--transition), filter 3s var(--transition),
     width 1.25s var(--transition);
   will-change: transform, filter, rotateY, width;
@@ -43,10 +43,10 @@ $item-background-hover: rgb(134, 235, 235);
   &.error {
     @include icon-center();
   }
-  .bx-wifi-off {
+  .bxs-file-image {
     @include icon-style(45px);
   }
-  .bx-wifi-off:hover {
+  .bxs-file-image:hover {
     @include icon-style-hover(50px, 700);
   }
 
@@ -86,14 +86,20 @@ $item-background-hover: rgb(134, 235, 235);
   .author-photo {
     margin: 0 0.6em 0.6em auto;
     padding: 0.08em 0.3em 0.08em 0.3em;
-    background: rgba(248, 251, 250, 0.91);
+    background: linear-gradient(138deg, rgba(252, 254, 255, 0.575) 8%, rgba(157, 183, 200, 0.504) 93%);
     border-radius: 0.05em;
     display: none;
+    font-size: medium;
+    font-weight: 550;
+    color: $author-photo-color;
   }
 
 @media (max-width: 1250px) {
     width: calc(var(--index)* 4.3);
     height: calc(var(--index)* 17);
+    .author-photo {
+      font-size: smaller;
+    }
   }
 
   @media (max-width: 738px) {

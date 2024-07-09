@@ -4,23 +4,23 @@ $nav-item-background: #492357;
 $active-nav-item-background: rgb(254, 254, 254);
 $active-nav-item-color: #000;
 $font-size: 1rem;
-$nav-icon-size: 60px;
+$nav-icon-size: 56.5px;
 $nav-text-width: 120px;
 $hover-animation: 1.5s cubic-bezier(0.25, 1, 0.3, 1) wipe-in-left both;
-$nav-background: rgb(73, 57, 113);
+$nav-background: rgba(69, 149, 252, 1);
 
 // NAV ITEM
 .nav-item {
   position: relative;
   display: block;
   cursor: pointer;
+  margin-bottom: 15px;
 
   a {
     position: relative;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
     color: $nav-item-color;
     font-size: $font-size;
     padding: 15px 0;
@@ -36,13 +36,12 @@ $nav-background: rgb(73, 57, 113);
       background-color: $nav-item-background;
       animation: $hover-animation;
       text-decoration: none;
-       z-index: 1;
+      z-index: 1;
     }
   }
 
   &.active {
-    b:nth-child(1),
-    b:nth-child(2) {
+    b {
       display: block;
     }
 
@@ -53,13 +52,15 @@ $nav-background: rgb(73, 57, 113);
     }
   }
 
-  b:nth-child(1),
-  b:nth-child(2) {
+  b {
     position: absolute;
     height: 15px;
-    width: 100%;
     background: $nav-item-color;
     display: none;
+    left: 97%;
+    width: 4%;
+    border: 4px solid transparent;
+    clip-path: circle(50% at 0%);
 
     &::before {
       content: "";
@@ -68,23 +69,26 @@ $nav-background: rgb(73, 57, 113);
       left: 0;
       width: 100%;
       height: 100%;
-      background: $nav-background;
     }
   }
 
   b:nth-child(1) {
     top: -15px;
+    border-top-left-radius: 20px;
 
     &::before {
       border-bottom-right-radius: 20px;
+      border-top-left-radius: 20px;
     }
   }
 
   b:nth-child(2) {
     bottom: -15px;
+    border-bottom-left-radius: 20px;
 
     &::before {
       border-top-right-radius: 20px;
+      border-bottom-left-radius: 20px;
     }
   }
 }
@@ -103,7 +107,7 @@ $nav-background: rgb(73, 57, 113);
 .nav-icon {
   width: $nav-icon-size;
   height: 20px;
-  font-size: 20px;
+  font-size: 22px;
   text-align: center;
 }
 
@@ -112,11 +116,77 @@ $nav-background: rgb(73, 57, 113);
   display: block;
   width: $nav-text-width;
   height: 20px;
+  font-size: 18.5px;
 }
 
 // Media Queries
-@media (max-width: 738px) {
-  .nav-item {
+.nav-item {
+  @media (min-width: 1500px) {
+    &.nav-item-out {
+      a {
+        i {
+          font-size: 26px;
+        }
+      }
+    }
+  }
+  @media (max-width: 1500px) and (min-width: 1250px) {
+    a {
+      i {
+        font-size: 24px;
+      }
+      span {
+        font-size: 20px;
+      }
+    }
+  }
+  @media (max-width: 1250px) and (min-width: 738px) {
+    &.nav-item-out {
+      a {
+        i {
+          font-size: 25px;
+        }
+      }
+    }
+    a {
+      i {
+        font-size: 25px;
+      }
+      span {
+        font-size: 18px;
+      }
+    }
+  }
+  @media (max-width: 1000px) and (min-width: 738px) {
+    a {
+      span {
+        font-size: 16px;
+      }
+    }
+  }
+  @media (min-width: 738px) {
+    &.nav-item-out {
+      a {
+        span {
+          display: none;
+        }
+      }
+    }
+    a {
+      text-decoration: none;
+      i {
+        text-decoration: underline;
+      }
+    }
+    &.active{
+      a {
+        i {
+          text-decoration: none;
+        }
+      }
+    }
+  }
+  @media (max-width: 738px) {
     &:hover {
       a {
         border-radius: 15px;
@@ -124,6 +194,11 @@ $nav-background: rgb(73, 57, 113);
     }
 
     &.active {
+      b {
+        display: none;
+        top: 0;
+        bottom: 0;
+      }
       a {
         border-radius: 16px;
       }
@@ -158,10 +233,8 @@ $nav-background: rgb(73, 57, 113);
       }
     }
   }
-}
 
-@media (max-width: 500px) {
-  .nav-item {
+  @media (max-width: 500px) {
     a {
       width: 70px;
       margin: 0px;

@@ -2,7 +2,12 @@
   <ul>
     @for(item of navList; track item.id){
     <app-nav-item (click)="navSelected(item)" [navIcon]="item.icon" [navText]="item.navText"
-      [navState]="item.active"></app-nav-item>
+    [navState]="item.active" [navItemOut]="navItemOut"></app-nav-item>
     }
   </ul>
+  <div class="shrink">
+    <div class="arrow-shrink">
+      <i class="bx bx-left-top-arrow-circle" (click)="dropOnNav()"></i>
+    </div>
+  </div>
 </nav>

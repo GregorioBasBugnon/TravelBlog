@@ -2,7 +2,7 @@
   @if (countryItem != undefined && photoItem != undefined) {
   <img src={{photoItem.src.portrait}} alt="countrie" class="country-travel" />
   <div class="overlay">
-    <h3>{{countryItem.translations.spa.common}}</h3>
+    <p>{{countryItem.translations.spa.common}}</p>
   </div>
   }@else {
   <div class="country-travel">
@@ -10,7 +10,7 @@
       @if( this.loading){
       <app-loading-view></app-loading-view>
       } @else {
-      <i class='bx bx-wifi-off'></i>
+      <i class='bx bxs-file-image'></i>
       }
     </div>
   </div>

@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef, Renderer2 } from '@angular/core';
+import { Component, ElementRef, Renderer2, ChangeDetectionStrategy } from '@angular/core';
 import { NavItemComponent } from './nav-item/nav-item.component';
 
 interface NavItem {
@@ -12,18 +12,34 @@ interface NavItem {
   standalone: true,
   imports: [NavItemComponent],
   templateUrl: './nav.component.html',
-  styleUrl: './nav.component.scss'
+  styleUrl: './nav.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NavComponent {
-  constructor(private el: ElementRef, private renderer: Renderer2) { }
+  private mainMenu!: HTMLElement;
+  private arrowShrink!: HTMLElement;
+  private bodyMain!: HTMLElement;
+  public navItemOut!: boolean;
 
   navList = [
-    { id: 1, icon: "house", navText: "Menú", active: true },
-    { id: 2, icon: "user", navText: "Perfil", active: false },
-    { id: 3, icon: "calendar-check", navText: "Agenda", active: false },
-    { id: 4, icon: "person-running", navText: "Actividades", active: false },
-    { id: 5, icon: "sliders", navText: "Ajustes", active: false }
+    { id: 1, icon: "bxs-home", navText: "Menú", active: true },
+    { id: 2, icon: "bxs-contact", navText: "Perfil", active: false },
+    { id: 3, icon: "bxs-calendar", navText: "Agenda", active: false },
+    { id: 4, icon: "bx-run", navText: "Actividades", active: false },
+    { id: 5, icon: "bx-slider", navText: "Ajustes", active: false }
   ];
+
+  ngOnInit(): void {
+    this.initializeHeaderElements();
+  }
+
+  private initializeHeaderElements(): void {
+    if (typeof window !== 'undefined') {
+      this.mainMenu = document.querySelector(".main-menu") as HTMLElement;
+      this.arrowShrink = document.querySelector(".arrow-shrink>i") as HTMLElement;
+      this.bodyMain = document.querySelector(".body-main") as HTMLElement;
+    }
+  }
 
   public navSelected(selectedNavItem: NavItem): void {
     this.navList.forEach(navItem => {
@@ -32,4 +48,17 @@ export class NavComponent {
     selectedNavItem.active = true;
   }
 
+  dropOnNav() {
+    this.mainMenu.classList.toggle("drop-nav");
+    this.bodyMain.classList.toggle("hide-nav");
+    if (this.arrowShrink.classList.value == "bx bx-left-top-arrow-circle") {
+      this.arrowShrink.classList.remove("bx-left-top-arrow-circle");
+      this.arrowShrink.classList.add("bx-right-down-arrow-circle");
+      this.navItemOut = true;
+    } else if (this.arrowShrink.classList.value == "bx bx-right-down-arrow-circle") {
+      this.arrowShrink.classList.remove("bx-right-down-arrow-circle");
+      this.arrowShrink.classList.add("bx-left-top-arrow-circle");
+      this.navItemOut = false;
+    }
+  }
 }
