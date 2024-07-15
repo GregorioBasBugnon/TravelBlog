@@ -1,4 +1,7 @@
 // Variables
+$popular-country-background: #75c2f6;
+$popular-country-fonts: "Alte Haas Grotesc";
+
 @mixin icon-center {
   align-items: center;
   justify-content: center;
@@ -12,24 +15,50 @@
   font-size: $size;
   font-weight: $weight;
 }
+@mixin alte-haas-grotesc {
+  @font-face {
+    font-family: "Alte Haas Grotesc";
+    src: url("../../../../assets/fonts/Alte_Haas_Grotesk/AlteHaasGroteskBold.ttf");
+  }
+}
+
+@include alte-haas-grotesc();
 
 /* ACTIVITIES */
-
-.image-container {
+.popular-country {
   position: relative;
   margin-bottom: 10px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 3px;
   border-radius: 10px;
-  background-color: rgb(173, 236, 236);
+  background-color: $popular-country-background;
   height: 100%;
   display: flex;
-}
 
-.image-container img {
-  width: 100%;
-  height: 100%;
-  border-radius: 10px;
-  object-fit: cover;
+  img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+  }
+
+  .overlay {
+    p {
+      margin-bottom: 8px;
+      margin-right: 10px;
+      color: #fff;
+      font-size: 1.17em;
+      font-weight: bold;
+      text-align: end;
+      font-family: $popular-country-fonts;
+      @media (max-width: 1000px) {
+        font-size: 1em;
+        font-weight: 600;
+      }
+    }
+  }
+  &:hover .overlay {
+    opacity: 0;
+  }
 }
 
 .overlay {
@@ -49,26 +78,8 @@
   }
   .bxs-file-image {
     @include icon-style(45px);
-  }
-  .bxs-file-image:hover {
-    @include icon-style-hover(50px, 700);
-  }
-}
-
-.image-container:hover .overlay {
-  opacity: 0;
-}
-
-.overlay p {
-  margin-bottom: 8px;
-  margin-right: 10px;
-  color: #fff;
-  font-size: 1.17em;
-  font-weight: bold;
-  text-align: end;
-
-  @media (max-width: 1000px) {
-    font-size: 1em;
-    font-weight: 600;
+    &:hover {
+      @include icon-style-hover(50px, 700);
+    }
   }
 }

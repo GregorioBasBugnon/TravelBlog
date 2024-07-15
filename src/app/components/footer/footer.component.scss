@@ -1,10 +1,40 @@
+// Variables
+$footer-background: #75c2f6;
+$footer-color: #000;
+$footer-title-color: #fff;
+$footer-link-color: #1d5d9b;
+$footer-link-color-click: #fbeeac;
+$footer-link-title-color: #1d5d9b;
+$footer-link-title-color-click: #f4d160;
+$mark-text-font: "Caviar Dreams Bold";
+
+@mixin caviar-dreams-bold {
+  @font-face {
+    font-family: "Caviar Dreams Bold";
+    src: url("../../../assets/fonts/Caviar_Dreams/CaviarDreams_BoldItalic.ttf");
+  }
+}
+@include caviar-dreams-bold();
+
+@keyframes circle-in-hesitate {
+  0% {
+    clip-path: circle(0%);
+  }
+  40% {
+    clip-path: circle(40%);
+  }
+  100% {
+    clip-path: circle(125%);
+  }
+}
+
 // FOOTER
 .site-footer {
-  background-color: #26272b;
+  background-color: $footer-background;
   padding: 45px 0 20px;
   font-size: 15px;
   line-height: 24px;
-  color: #737373;
+  color: $footer-color;
 
   .start-footer {
     .header-site-footer,
@@ -40,7 +70,7 @@
   }
 
   h6 {
-    color: #fff;
+    color: $footer-title-color;
     font-size: 16px;
     text-transform: uppercase;
     margin-top: 5px;
@@ -48,11 +78,24 @@
   }
 
   a {
-    color: #737373;
-
+    color: $footer-link-color;
     &:hover {
-      color: #3366cc;
       text-decoration: none;
+      color: $footer-link-color-click;
+    }
+  }
+
+  .copyright-text{
+    .mark {
+      color: $footer-link-title-color;
+      font-size: 15px;
+      font-weight: 700;
+      font-family: $mark-text-font;
+      &:hover {
+        color: $footer-link-title-color-click;
+        text-decoration: none;
+        font-size: 17px;
+      }
     }
   }
 
@@ -68,7 +111,6 @@
         &:active,
         &:focus,
         &:hover {
-          color: #3366cc;
           text-decoration: none;
         }
       }
@@ -151,7 +193,8 @@
   }
   @media (max-width: 767px) {
     margin-bottom: 70px;
-    .start-footer, .end-footer {
+    .start-footer,
+    .end-footer {
       display: inherit;
       padding: 2% 2% 2% 0;
     }

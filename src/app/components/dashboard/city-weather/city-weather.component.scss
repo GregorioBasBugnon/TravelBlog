@@ -1,14 +1,23 @@
 // Variables
-$background-city-weather: rgb(214, 227, 248);
-$background-radient-grade: rgb(174, 238, 238);
-$background-effect-grade: rgb(55, 217, 217);
+$city-weather-background: #F4D160;
+$radient-grade-background: rgb(174, 238, 238);
+$effect-grade-background: rgb(55, 217, 217);
+$sections-weather-font:"Alte Haas Grotesc Bold";
+
+@mixin alte-haas-grotesc-bold {
+  @font-face {
+    font-family: "Alte Haas Grotesc Bold";
+    src: url("../../../../assets/fonts/Alte_Haas_Grotesk/AlteHaasGroteskBold.ttf");
+  }
+}
+@include alte-haas-grotesc-bold();
 
 // Active Weather
 .active-weather {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: $background-city-weather;
+  background-color: $city-weather-background;
   padding: 0 10px;
   margin: 15px 10px 0;
   border-radius: 15px;
@@ -88,7 +97,9 @@ $background-effect-grade: rgb(55, 217, 217);
     }
     .weather-content {
       p {
+        font-family: "Nunito", sans-serif;
         span {
+          font-family: $sections-weather-font;
           font-weight: 700;
         }
         &:nth-child(1) {
@@ -98,11 +109,11 @@ $background-effect-grade: rgb(55, 217, 217);
       }
       #city-name {
         text-decoration: underline;
-        text-decoration-color: $background-city-weather;
+        text-decoration-color: $city-weather-background;
         text-decoration-thickness: 1.5px;
         span{
           text-decoration: underline;
-          text-decoration-color: $background-city-weather;
+          text-decoration-color: $city-weather-background;
           text-decoration-thickness: 1.5px;
         }
       }
@@ -126,15 +137,15 @@ $background-effect-grade: rgb(55, 217, 217);
       .gradient-trapeze {
         background: linear-gradient(
           7deg,
-          $background-radient-grade 7%,
-          $background-effect-grade 72%
+          $radient-grade-background 7%,
+          $effect-grade-background 72%
         );
         border-radius: 100px;
-        box-shadow: $background-radient-grade 0px 1px 10px,
-          $background-radient-grade 0px 4px 2px,
-          $background-radient-grade 0px 8px 4px,
-          $background-radient-grade 0px 16px 8px,
-          $background-radient-grade 0px 32px 16px;
+        box-shadow: $radient-grade-background 0px 1px 10px,
+          $radient-grade-background 0px 4px 2px,
+          $radient-grade-background 0px 8px 4px,
+          $radient-grade-background 0px 16px 8px,
+          $radient-grade-background 0px 32px 16px;
         width: 107px;
         height: 80px;
       }
@@ -143,7 +154,7 @@ $background-effect-grade: rgb(55, 217, 217);
         content: "";
         width: 61px;
         height: 0px;
-        border-top: 150px solid $background-city-weather;
+        border-top: 150px solid $city-weather-background;
         box-sizing: border-box;
         top: -3px;
       }
@@ -181,7 +192,7 @@ $background-effect-grade: rgb(55, 217, 217);
         content: "";
         position: absolute;
         inset: 10px;
-        background-color: $background-city-weather;
+        background-color: $city-weather-background;
         border-radius: 50%;
       }
     }

@@ -1,12 +1,21 @@
 // Variables
-$main-menu-background: rgba(29, 231, 253);
-$font-family: "Roboto", sans-serif;
+$main-menu-background: #1d5d9b;
+$main-menu-font: "Roboto", sans-serif;
 $main-menu-gradient: linear-gradient(
   357deg,
-  rgb(131, 58, 180) 0%,
-  rgb(29, 229, 253) 65%,
-  rgb(69, 149, 252) 97%
+  #f4d160 0%,
+  #75c2f6 76%,
+  #1d5d9b 83%
 );
+$background-arrow-shrink: #75c2f6;
+$separator-nav-background: #fbeeac;
+$separator-nav-background-gradient: radial-gradient(
+  circle,
+  #f4d160 0%,
+  #fbeeac 57%
+);
+$arrow-shrink-color: #f7eedd;
+$arrow-shrink-color-click: #fff;
 
 // Animation
 @keyframes wipe-in-top-left {
@@ -31,8 +40,20 @@ $main-menu-gradient: linear-gradient(
 .main-menu {
   overflow: hidden;
   background: $main-menu-background;
-  border-radius: 0 10px 5px 0;
-  font-family: $font-family;
+  font-family: $main-menu-font;
+  .separator-nav {
+    position: relative;
+    display: flex;
+    background-color: $separator-nav-background;
+    background: $separator-nav-background-gradient;
+    height: 5.5px;
+    width: 27%;
+    margin: 0 auto;
+    border-radius: 12px;
+    margin-bottom: 8px;
+    margin-top: 1px;
+    margin-left: 88px;
+  }
   @media (min-width: 738px) {
     background: $main-menu-gradient;
   }
@@ -40,7 +61,6 @@ $main-menu-gradient: linear-gradient(
     margin-top: 0px;
     @media (min-width: 1250px) {
       padding-left: 15%;
-
     }
     @media (max-width: 1250px) {
       padding-inline-start: 0;
@@ -54,10 +74,9 @@ $main-menu-gradient: linear-gradient(
     }
   }
 
-
   @media (min-width: 738px) {
     ul {
-      padding-top: 23px;
+      padding-top: 22px;
       animation: 2.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) wipe-in-bottom-right
         both;
     }
@@ -84,6 +103,9 @@ $main-menu-gradient: linear-gradient(
     padding-top: 0;
     border-radius: 10px 10px 0 0;
     background-color: $main-menu-background;
+    .separator-nav {
+      display: none;
+    }
     ul {
       margin: 10px 0 10px 0;
       padding-left: 35px;
@@ -106,7 +128,7 @@ $main-menu-gradient: linear-gradient(
     display: flex;
     align-items: center;
     .arrow-shrink {
-      background-color: $main-menu-background;
+      background-color: $background-arrow-shrink;
       position: absolute;
       left: 76%;
       top: 10px;
@@ -117,7 +139,7 @@ $main-menu-gradient: linear-gradient(
       line-height: 40px;
       border-radius: 25px;
       i {
-        color: white;
+        color: $arrow-shrink-color;
         font-size: 43px;
         cursor: pointer;
         line-height: 40px;
@@ -128,6 +150,9 @@ $main-menu-gradient: linear-gradient(
         @media (max-width: 1000px) and (max-width: 768px) {
           font-size: 38px;
           line-height: 37px;
+        }
+        &:hover {
+          color: $arrow-shrink-color-click;
         }
       }
       @media (max-width: 1250px) and (min-width: 1000px) {

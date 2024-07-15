@@ -1,20 +1,57 @@
 // Variables
 $star-color: #ddcc14;
 $star-color-error: rgb(134, 235, 235);
+$user-email-font: "Caviar Dreams";
+$user-name-font: "Caviar Dreams Bold";
+$country-name-fonts: "Alte Haas Grotesc Bold";
+
+@mixin caviar-dreams-italic {
+  @font-face {
+    font-family: "Caviar Dreams";
+    src: url("../../../../assets/fonts/Caviar_Dreams/CaviarDreams.ttf");
+  }
+}
+@mixin caviar-dreams-bold {
+  @font-face {
+    font-family: "Caviar Dreams Bold";
+    src: url("../../../../assets/fonts/Caviar_Dreams/CaviarDreams_Bold.ttf");
+  }
+}
+@mixin alte-haas-grotesc-bold {
+  @font-face {
+    font-family: "Alte Haas Grotesc Bold";
+    src: url("../../../../assets/fonts/Alte_Haas_Grotesk/AlteHaasGroteskBold.ttf");
+  }
+}
+@include caviar-dreams-italic();
+@include caviar-dreams-bold();
+@include alte-haas-grotesc-bold();
 
 /* REVIEWS */
-
 .review-card {
-  padding: 20px 20px 20px 10px;
+  padding: 20px 20px 35px 3px;
 
   h4 {
     font-size: 14.5px;
-    margin-block-end: 0;
+    margin-bottom: 7px;
+    font-family: $country-name-fonts;
+    margin-top: 0;
+
   }
-  .userName {
-    margin-bottom: 8px;
-    font-size: 0.95em;
-font-weight: 800;
+
+  .user-valoration {
+    display: flex;
+    align-items: center;
+    .userName {
+      margin-bottom: 6px;
+      font-size: 0.95em;
+      font-weight: bolder;
+      font-family: $user-name-font;
+      margin-right: 2%;
+    }
+    span {
+      margin-right: 1.7%;
+    }
   }
 
   p {
@@ -28,6 +65,14 @@ font-weight: 800;
       display: -webkit-box;
       -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
+    }
+    i {
+      font-family: "Caviar Dreams Italic";
+      &.conctact-email{
+        margin-bottom: 11px;
+        font-family: $user-email-font;
+        font-style: normal;
+      }
     }
   }
 

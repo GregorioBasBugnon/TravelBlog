@@ -1,4 +1,6 @@
 // Variables
+$contact-font: "Alte Haas Grotesc";
+
 @mixin icon-center {
   display: flex;
   align-items: center;
@@ -16,6 +18,13 @@
   font-size: $size;
   font-weight: $weight;
 }
+@mixin alte-haas-grotesc {
+  @font-face {
+    font-family: "Alte Haas Grotesc";
+    src: url("../../../../assets/fonts/Alte_Haas_Grotesk/AlteHaasGroteskRegular.ttf");
+  }
+}
+@include alte-haas-grotesc();
 
 // Contacts
 .contact-status {
@@ -54,7 +63,7 @@
       font-size: 0.9rem;
       line-height: 1.5;
       padding-right: 10px;
-
+font-family: $contact-font;
       span {
         font-weight: 700;
         color: var(--accent-color);

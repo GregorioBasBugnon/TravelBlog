@@ -1,7 +1,15 @@
 // Variables
-$item-background-hover: rgb(134, 235, 235);
+$collage-item-background: #75c2f6;
+$collage-item-background-hover: #1d5d9b;
 $author-photo-color: rgb(33, 36, 36);
+$author-photo-fonts:"Alte Haas Grotesk Italic";
 
+@mixin caviar-dreams-bold-italic {
+  @font-face {
+    font-family: "Alte Haas Grotesk Italic";
+    src: url("../../../../assets/fonts/Alte_Haas_Grotesk/AlteHaasGroteskBold.ttf");
+  }
+}
 @mixin icon-center {
   align-items: center;
   justify-content: center;
@@ -15,6 +23,8 @@ $author-photo-color: rgb(33, 36, 36);
   font-size: $size;
   font-weight: $weight;
 }
+
+@include caviar-dreams-bold-italic();
 
 * {
   margin: 0;
@@ -39,7 +49,7 @@ $author-photo-color: rgb(33, 36, 36);
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
-  background-color: rgb(173, 236, 236);
+  background-color: $collage-item-background;
   &.error {
     @include icon-center();
   }
@@ -65,7 +75,7 @@ $author-photo-color: rgb(33, 36, 36);
 
   &:hover {
     transform: translateZ(calc(var(--index) * 8));
-    background-color: $item-background-hover;
+    background-color: $collage-item-background-hover;
   }
 
   &:active,
@@ -90,8 +100,12 @@ $author-photo-color: rgb(33, 36, 36);
     border-radius: 0.05em;
     display: none;
     font-size: medium;
-    font-weight: 550;
+    font-weight: bolder;
+    font-style: italic;
     color: $author-photo-color;
+    font-family: $author-photo-fonts;
+    font-style: italic;
+
   }
 
 @media (max-width: 1250px) {

@@ -1,3 +1,9 @@
+// Variables
+$alert-message: #f4d160;
+$alert-message-background: linear-gradient(0deg, rgba(251,238,172,1) 0%, rgba(255,255,255,1) 13%);
+$alert-message-progress: #f4d160;
+$close-color: #373726;
+
 //Keyframe
 @keyframes progress {
   100% {
@@ -10,10 +16,10 @@
   top: 740px;
   right: 26px;
   border-radius: 12px;
-  background: #fff;
+  background: $alert-message-background;
   padding: 20px 35px 20px 25px;
   box-shadow: 0 5px 10px #0000001a;
-  border-left: 6px solid #baba46;
+  border-left: 6px solid $alert-message;
   overflow: hidden;
   transform: translateX(calc(100% + 30px));
   transition: all 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
@@ -42,10 +48,11 @@
       justify-content: center;
       height: 35px;
       width: 35px;
-      background-color: #baba46;
+      background-color: $alert-message;
       color: #fff;
       font-size: 20px;
       border-radius: 65px;
+      border: 2px solid #fff;
     }
 
     .message {
@@ -73,7 +80,7 @@
     padding: 5px;
     cursor: pointer;
     opacity: 0.7;
-    color: #222219;
+    color: $close-color;
     font-size: 22px;
 
     &:hover {
@@ -88,10 +95,10 @@
     height: 3px;
     width: 100%;
     background-color: #ddd;
-
+    border-top: 1px solid white;
     &.active:before {
       animation: progress 5s linear forwards;
-      background-color: #a9a918;
+      background-color: $alert-message-progress;
     }
 
     &:before {

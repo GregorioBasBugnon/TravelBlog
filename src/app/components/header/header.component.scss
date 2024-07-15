@@ -5,7 +5,7 @@ $header-height-mobile-large: 280px;
 $header-height-mobile-mediumm: 250px;
 $title-font-size: "Caviar Dreams Bold";
 $header-z-index: 10;
-$header-banner-bg-color: #333;
+$header-banner-bg-color: #75c2f6;
 $header-title-bg: linear-gradient(
   123deg,
   rgba(12, 26, 34, 0.955) 10%,
@@ -90,7 +90,6 @@ header {
     width: 100%;
     height: 300px;
     .banner-error {
-      background-color: rgb(173, 236, 236);
       height: 90%;
 
       @include icon-center();

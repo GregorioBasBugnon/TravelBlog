@@ -1,4 +1,5 @@
 <nav class="main-menu">
+  <div class="separator-nav"></div>
   <ul>
     @for(item of navList; track item.id){
     <app-nav-item (click)="navSelected(item)" [navIcon]="item.icon" [navText]="item.navText"

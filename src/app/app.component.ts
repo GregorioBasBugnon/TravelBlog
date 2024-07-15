@@ -11,7 +11,6 @@ import { AlertMessageComponent } from './components/alert-message/alert-message.
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'TravelBlog';
   errorMessage = '';
   @ViewChild(MainMenuComponent) mainMenuComponent!: MainMenuComponent;
 

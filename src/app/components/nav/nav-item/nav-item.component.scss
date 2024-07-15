@@ -1,20 +1,30 @@
 // Variables
 $nav-item-color: #fff;
-$nav-item-background: #492357;
+$nav-item-background-hover: #75c2f6;
+$nav-item-background-text-hover: #F7EEDD;
 $active-nav-item-background: rgb(254, 254, 254);
 $active-nav-item-color: #000;
 $font-size: 1rem;
 $nav-icon-size: 56.5px;
 $nav-text-width: 120px;
 $hover-animation: 1.5s cubic-bezier(0.25, 1, 0.3, 1) wipe-in-left both;
-$nav-background: rgba(69, 149, 252, 1);
+
+// Animations
+@keyframes wipe-in-left {
+  from {
+    clip-path: inset(0 0 0 100%);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
 
 // NAV ITEM
 .nav-item {
   position: relative;
   display: block;
   cursor: pointer;
-  margin-bottom: 15px;
+  margin-bottom: 23px;
 
   a {
     position: relative;
@@ -31,9 +41,10 @@ $nav-background: rgba(69, 149, 252, 1);
 
   &:hover:not(.active):hover {
     a {
+      color: $nav-item-background-text-hover;
       border-top-left-radius: 18px;
       border-bottom-left-radius: 18px;
-      background-color: $nav-item-background;
+      background-color: $nav-item-background-hover;
       animation: $hover-animation;
       text-decoration: none;
       z-index: 1;
@@ -54,7 +65,7 @@ $nav-background: rgba(69, 149, 252, 1);
 
   b {
     position: absolute;
-    height: 15px;
+    height: 6px;
     background: $nav-item-color;
     display: none;
     left: 97%;
@@ -73,7 +84,7 @@ $nav-background: rgba(69, 149, 252, 1);
   }
 
   b:nth-child(1) {
-    top: -15px;
+    top: -11px;
     border-top-left-radius: 20px;
 
     &::before {
@@ -83,7 +94,7 @@ $nav-background: rgba(69, 149, 252, 1);
   }
 
   b:nth-child(2) {
-    bottom: -15px;
+    bottom: -11px;
     border-bottom-left-radius: 20px;
 
     &::before {
@@ -93,15 +104,6 @@ $nav-background: rgba(69, 149, 252, 1);
   }
 }
 
-// Keyframes
-@keyframes wipe-in-left {
-  from {
-    clip-path: inset(0 0 0 100%);
-  }
-  to {
-    clip-path: inset(0 0 0 0);
-  }
-}
 
 // NAV ICON
 .nav-icon {
