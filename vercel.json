@@ -4,13 +4,6 @@
     {
       "src": "dist/travel-blog",
       "use": "@vercel/static"
-    },
-    { 
-      "src": "angular.json",
-      "use": "@vercel/static-build",
-      "config": { 
-        "distDir": "dist" 
-      } 
     }
   ],
   "routes": [
