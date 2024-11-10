@@ -1,26 +1,7 @@
 {
-  "version": 2,
-  "buildCommand": "yarn vercel-build",
-  "installCommand": "yarn install",
-  "framework": "angular",
-  "outputDirectory": "dist/TravelBlog",
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "dist/TravelBlog"
+  "rewrites": [
+      {
+        "source": "/(.*)", "destination": "/"
       }
-    }
-  ],
-  "routes": [
-    {
-      "src": "/",
-      "dest": "/"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
-    }
-  ]
+    ]
 }
