@@ -1,6 +1,10 @@
 {
   "version": 2,
-  "builds": [
+  "buildCommand": "npm run build",
+  "installCommand": "npm install",
+  "framework": "angular",
+  "outputDirectory": "dist/TravelBlog",
+    "builds": [
     {
       "src": "package.json",
       "use": "@vercel/static-build",
