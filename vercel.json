@@ -4,9 +4,6 @@
   "installCommand": "yarn install",
   "framework": "angular",
   "outputDirectory": "dist/TravelBlog",
-  "rewrites": [
-      {"source": "/:a*", "destination": "/"}
-    ],
     "builds": [
     {
       "src": "package.json",
