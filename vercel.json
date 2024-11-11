@@ -2,11 +2,9 @@
   "version": 2,
   "public": true,
   "rewrites": [
-    { "source": "/(.*)", "destination": "/api/server" }
-  ],
-  "functions": {
-    "api/server.js": {
-      "includeFiles": "dist/TravelBlog/browser/**"
+    {
+      "source": "/((?!api/.*).*)",
+      "destination": "/index.html"
     }
-  }
+  ]
 }
