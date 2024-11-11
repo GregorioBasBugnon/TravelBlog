@@ -18,7 +18,10 @@
           "builder": "@angular-devkit/build-angular:application",
           "options": {
             "baseHref": "/",
-            "outputPath": "dist/TravelBlog/browser",
+          "outputPath": {
+            "browser": "dist/TravelBlog/browser",
+            "server": "dist/TravelBlog/server"
+          },
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
