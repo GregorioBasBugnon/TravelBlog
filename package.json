@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --prod",
+    "build": "ng build && ng run TravelBlog:server",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "vercel-build": "ng build --configuration production",
