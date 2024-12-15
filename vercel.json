@@ -2,39 +2,12 @@
   "version": 2,
   "builds": [
     {
-      "src": "dist/TravelBlog/browser/**/*",
+      "src": "dist/TravelBlog/browser/*",
       "use": "@vercel/static"
     }
   ],
   "routes": [
-    { "src": "/(.*)", "dest": "/index.html" },
-    {
-      "src": "/assets/image/weather/(.*)",
-      "dest": "/dist/TravelBlog/browser/assets/image/weather/$1"
-    },
-    {
-      "src": "/media/(.*\\.ttf)",
-      "dest": "/dist/TravelBlog/browser/media/$1"
-    },
-    {
-      "src": "/styles-(.*)\\.css",
-      "dest": "/dist/TravelBlog/browser/styles-$1.css"
-    },
-    {
-      "src": "/polyfills-(.*)\\.js",
-      "dest": "/dist/TravelBlog/browser/polyfills-$1.js"
-    },
-    {
-      "src": "/main-(.*)\\.js",
-      "dest": "/dist/TravelBlog/browser/main-$1.js"
-    },
-    {
-      "src": "/(.*\\.[a-z0-9]+)$",
-      "dest": "/dist/TravelBlog/browser/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/dist/TravelBlog/browser/index.html"
-    }
+    { "src": "/(.*)", "dest": "/index.html" }
   ]
 }
+
