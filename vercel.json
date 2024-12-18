@@ -2,39 +2,32 @@
   "version": 2,
   "builds": [
     {
-      "src": "dist/TravelBlog/browser/**/*",
-      "use": "@vercel/static"
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist/TravelBlog/browser"
+      }
+    },
+    {
+      "src": "dist/TravelBlog/server/server.mjs",
+      "use": "@vercel/node"
     }
   ],
   "routes": [
-    { "src": "/(.*)", "dest": "./index.html" },
     {
-      "src": "/assets/image/weather/(.*)",
-      "dest": "/dist/TravelBlog/browser/assets/image/weather/$1"
+      "src": "/api/(.*)",
+      "dest": "dist/TravelBlog/server/server.mjs"
     },
     {
-      "src": "/media/(.*\\.ttf)",
-      "dest": "/dist/TravelBlog/browser/media/$1"
+      "handle": "filesystem"
     },
     {
-      "src": "/styles-(.*)\\.css",
-      "dest": "/dist/TravelBlog/browser/styles-$1.css"
-    },
-    {
-      "src": "/polyfills-(.*)\\.js",
-      "dest": "/dist/TravelBlog/browser/polyfills-$1.js"
-    },
-    {
-      "src": "/main-(.*)\\.js",
-      "dest": "/dist/TravelBlog/browser/main-$1.js"
-    },
-    {
-      "src": "/(.*\\.[a-z0-9]+)$",
-      "dest": "/dist/TravelBlog/browser/$1"
+      "src": "/assets/(.*)",
+      "dest": "/assets/$1"
     },
     {
       "src": "/(.*)",
-      "dest": "/dist/TravelBlog/browser/index.html"
+      "dest": "dist/TravelBlog/server/server.mjs"
     }
   ]
 }
