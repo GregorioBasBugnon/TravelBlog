@@ -99,10 +99,12 @@ $arrow-shrink-color-click: #fff;
     position: fixed;
     z-index: 100;
     width: 100%;
-    top: 754px;
+    bottom: -22px;
     padding-top: 0;
     border-radius: 10px 10px 0 0;
     background-color: $main-menu-background;
+    box-sizing: border-box;
+
     .separator-nav {
       display: none;
     }

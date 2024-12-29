@@ -3,6 +3,7 @@ $header-child-background: #1d5d9b;
 $header-child-color: white;
 $input-search-box-border: white;
 $search-box-background: #75c2f6;
+$search-box-background-hover: #fbeeac;
 $search-box-background-focus: #f4d160;
 $search-box-color: white;
 $search-box-color-placeholder: black;
@@ -10,15 +11,20 @@ $search-box-color-placeholder-click: #1d5d9b;
 $button-search-box-background: #75c2f6;
 $button-search-box-color: white;
 $button-search-box-color-click: black;
-$button-search-box-background-click: #f4d160;
-$button-search-box-background-border: #1d5d9b;
+$button-search-box-background-hover: #f4d160;
+$button-search-box-background-click: #e5c836;
 $button-search-box-background-border-click: #fbeeac;
 $notified-background: #75c2f6;
 $messaged-background: #e5c836;
-$back-search-bacground:#e5c836;
-$user-img-border: #fbeeac;
+$back-search: #75c2f6;
+$back-search-bacground: #1d5d9b;
+$bacground-back-search: #fbeeac;
+$bacground-search-complete: #e5c836;
+$user-img-border: #75c2f6;
+$icon-seach-border: white;
+$icon-seach-border-hover: black;
 $title-font: "Caviar Dreams Bold Italic";
-$user-profile-fonts:"Alte Haas Grotesc";
+$user-profile-fonts: "Alte Haas Grotesc";
 
 @mixin alte-haas-grotesc {
   @font-face {
@@ -68,7 +74,7 @@ $user-profile-fonts:"Alte Haas Grotesc";
   }
 }
 
-@include  caviar-dreams-bold-italic();
+@include caviar-dreams-bold-italic();
 @include alte-haas-grotesc();
 
 // HEADER-CHILD
@@ -107,8 +113,13 @@ $user-profile-fonts:"Alte Haas Grotesc";
             position: absolute;
             margin-right: -4px;
             height: 36px;
-            border-left: 0.25px solid rgb(22, 22, 22);
-            border-right: 1px solid $input-search-box-border;
+            border-left: 0.55px solid $icon-seach-border;
+            border-right: 1px solid $icon-seach-border;
+            &:hover{
+              border-left: 0.25px solid $icon-seach-border-hover;
+              border-right: 0.55px solid $icon-seach-border-hover;
+              margin-left: 45px;
+            }
           }
         }
       }
@@ -172,9 +183,11 @@ $user-profile-fonts:"Alte Haas Grotesc";
       font-size: 42px;
       display: flex;
       align-items: center;
-      color: $back-search-bacground;
+      color: $back-search;
+      border-radius: 50px;
       &:hover {
         color: white;
+        color: $bacground-back-search;
       }
     }
   }
@@ -209,10 +222,10 @@ $user-profile-fonts:"Alte Haas Grotesc";
         color: $search-box-color-placeholder;
       }
       &:not(:focus) {
-          color: $search-box-color;
+        color: $search-box-color;
       }
       &:hover {
-        background-color: $search-box-background-focus;
+        background-color: $search-box-background-hover;
         color: $search-box-color-placeholder-click;
 
         &::placeholder {
@@ -244,8 +257,8 @@ $user-profile-fonts:"Alte Haas Grotesc";
       font-size: 1.3rem;
       background-color: $button-search-box-background;
       cursor: pointer;
-      border-left: 3.5px solid $button-search-box-background-border;
-      border-right: 2px solid $input-search-box-border;
+      border-left: 3.5px solid $icon-seach-border;
+      border-right: 2px solid $icon-seach-border;
       box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
       border-radius: 10px;
       border-top-left-radius: 7px;
@@ -253,9 +266,11 @@ $user-profile-fonts:"Alte Haas Grotesc";
       color: $button-search-box-color;
 
       &:hover {
-        background-color: $button-search-box-background-click;
+        background-color: $button-search-box-background-hover;
         color: $button-search-box-color-click;
         border-left-color: $button-search-box-background-border-click;
+        border-right-color: $button-search-box-background-border-click;
+
       }
     }
   }
@@ -280,7 +295,7 @@ $user-profile-fonts:"Alte Haas Grotesc";
         font-size: 22px;
         cursor: pointer;
         opacity: 0.9;
-        &:hover{
+        &:hover {
           opacity: 1;
         }
       }
@@ -296,10 +311,12 @@ $user-profile-fonts:"Alte Haas Grotesc";
       border-radius: 50%;
       margin-right: 6px;
       cursor: pointer;
-      &:hover{
-        width: 41.5px;
+      &:hover {
         border: 1px solid $user-img-border;
       }
+    }
+    .user-error:hover {
+        width: 41.5px;
     }
     .user-error {
       @include icon-center();
@@ -311,8 +328,8 @@ $user-profile-fonts:"Alte Haas Grotesc";
       }
     }
 
-
-    .notified, .messaged {
+    .notified,
+    .messaged {
       position: relative;
 
       &::after {
@@ -324,15 +341,14 @@ $user-profile-fonts:"Alte Haas Grotesc";
       }
     }
     .notified::after {
-        top: -3px;
-        right: -2px;
-        background-color: $notified-background;
+      top: -3px;
+      right: -2px;
+      background-color: $notified-background;
     }
     .messaged::after {
-        top: -2px;
-        right: -4px;
-        background-color: $messaged-background;
-
+      top: -2px;
+      right: -4px;
+      background-color: $messaged-background;
     }
   }
 }
@@ -425,7 +441,6 @@ $user-profile-fonts:"Alte Haas Grotesc";
             position: absolute;
             top: 1px;
             right: 3%;
-            border-left: 0.25px solid rgb(22, 22, 22);
             border-right: 2px solid $input-search-box-border;
             margin-right: 0;
           }

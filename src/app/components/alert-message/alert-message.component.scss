@@ -119,7 +119,8 @@ $close-color: #373726;
     padding: 18px 25px 18px 20px;
     z-index: 100;
     &.scroll-alert {
-      top: 66px;
+      top: 20%;
+      // right: -2%;
     }
     .alert-content {
       .check {
