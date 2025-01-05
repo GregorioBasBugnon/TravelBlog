@@ -5,7 +5,7 @@ $input-search-box-border: white;
 $search-box-background: #75c2f6;
 $search-box-background-hover: #fbeeac;
 $search-box-background-focus: #f4d160;
-$search-box-color: white;
+$search-box-color: black;
 $search-box-color-placeholder: black;
 $search-box-color-placeholder-click: #1d5d9b;
 $button-search-box-background: #75c2f6;
@@ -23,6 +23,14 @@ $bacground-search-complete: #e5c836;
 $user-img-border: #75c2f6;
 $icon-seach-border: white;
 $icon-seach-border-hover: black;
+$country-search-background: #fbeeac;
+$country-search-background-hover: #f4d160;
+$container-countries-border: #f4d160;
+$container-countries-scroll: #f4d160;
+$container-countries-scroll-back: white;
+$container-countries-scroll-border: #f4d160;
+$container-countries-scroll-hover: #e5c836;
+
 $title-font: "Caviar Dreams Bold Italic";
 $user-profile-fonts: "Alte Haas Grotesc";
 
@@ -77,6 +85,11 @@ $user-profile-fonts: "Alte Haas Grotesc";
 @include caviar-dreams-bold-italic();
 @include alte-haas-grotesc();
 
+// HIDEEN
+.hidden-element {
+  display: none;
+}
+
 // HEADER-CHILD
 .header-child {
   width: 100%;
@@ -111,11 +124,12 @@ $user-profile-fonts: "Alte Haas Grotesc";
           .icon-search {
             width: 40px;
             position: absolute;
-            margin-right: -4px;
+            margin-right: -3.5px;
+            margin-top: 0px;
             height: 36px;
             border-left: 0.55px solid $icon-seach-border;
             border-right: 1px solid $icon-seach-border;
-            &:hover{
+            &:hover {
               border-left: 0.25px solid $icon-seach-border-hover;
               border-right: 0.55px solid $icon-seach-border-hover;
               margin-left: 45px;
@@ -194,7 +208,7 @@ $user-profile-fonts: "Alte Haas Grotesc";
   form,
   div {
     line-height: 60px;
-    margin-left: 10px;
+    margin-left: 8px;
   }
 
   div h4 {
@@ -202,58 +216,137 @@ $user-profile-fonts: "Alte Haas Grotesc";
   }
   .search-box {
     position: relative;
-    display: flex;
-    margin-left: 3%;
-    input {
-      width: 81%;
-      height: 20px;
-      border: 1px solid $input-search-box-border;
-      border-radius: 12px;
-      font-size: 1rem;
-      font-weight: 500;
-      letter-spacing: 0.6px;
-      padding: 8px 8% 8px 4.6%;
-      margin: 0 auto;
-      background-color: $search-box-background;
+    // display: flex;
+    display: inline-block;
+    margin-left: 7%;
+    // margin-top: 5.5px;
+    z-index: 2;
+    top: 1.5px;
 
-      &::placeholder {
-        opacity: 0.5;
-        font-weight: 400;
-        color: $search-box-color-placeholder;
-      }
-      &:not(:focus) {
-        color: $search-box-color;
-      }
-      &:hover {
-        background-color: $search-box-background-hover;
-        color: $search-box-color-placeholder-click;
+    #search-selection {
+      // display: contents;
+      input {
+        width: 83%;
+        height: 20px;
+        border: 1px solid $input-search-box-border;
+        border-radius: 12px;
+        font-size: 1rem;
+        font-weight: 500;
+        letter-spacing: 0.6px;
+        padding: 8px 11% 8px 2.6%;
+        margin: auto;
+        background-color: $search-box-background;
+        cursor: pointer;
+        overflow: hidden;
+        text-overflow: ellipsis;
 
         &::placeholder {
-          opacity: 0.8;
+          opacity: 0.5;
+          font-weight: 400;
+          color: $search-box-color-placeholder;
+        }
+        &:not(:focus) {
+          color: $search-box-color;
+        }
+        &:hover {
+          background-color: $search-box-background-hover;
           color: $search-box-color-placeholder-click;
+
+          &::placeholder {
+            opacity: 0.8;
+            color: $search-box-color-placeholder-click;
+          }
+        }
+
+        &:focus {
+          background-color: $search-box-background-focus;
+          outline: #ffffff;
+          color: $search-box-color-placeholder;
+
+          &::placeholder {
+            font-weight: 500;
+            color: $search-box-color-placeholder;
+          }
         }
       }
 
-      &:focus {
-        background-color: $search-box-background-focus;
-        outline: #ffffff;
-        color: $search-box-color-placeholder;
+      /*SCROLLBAR*/
+      .container-countries {
+        transition: height 0.3s ease-in;
+        min-height: 37px;
+        max-height: 400px;
+        width: 86.5%;
+        overflow: auto;
+        border: 1px solid $container-countries-border;
+        padding-right: 2px;
+        z-index: 3;
+        margin-top: -9.9px;
+        background-color: $country-search-background;
+        box-sizing: content-box;
+        position: absolute;
 
-        &::placeholder {
-          font-weight: 500;
-          color: $search-box-color-placeholder;
+        @media (min-width: 738px) and (max-width: 1250px) {
+          max-height: 300px;
+        }
+        @media (max-width: 738px) {
+          max-height: 200px;
+        }
+
+        &::-webkit-scrollbar {
+          width: 13px; /* Ancho de la barra vertical */
+          height: 5px;
+          background-color: $container-countries-scroll-back;
+          border-left: 1px solid $container-countries-scroll-border;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          background-color: $container-countries-scroll;
+          border-radius: 8px;
+        }
+
+        &::-webkit-scrollbar-thumb:hover {
+          background-color: $container-countries-scroll-hover; /* Color al pasar el mouse */
+        }
+
+        @media (max-width: 736px) {
+          margin-top: 0.5px;
+        }
+        .country-search {
+          margin-left: 1px;
+          padding: 3px 10px 3px 13px;
+          &:not(.hidden-element) {
+            display: flex;
+            align-items: center;
+            justify-content: start;
+            cursor: pointer;
+          }
+
+          &:hover {
+            background-color: $country-search-background-hover;
+          }
+          img {
+            width: 27px;
+            height: 17px;
+          }
+          span {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            padding-left: 10px;
+            line-height: 29px;
+          }
         }
       }
     }
     .icon-search {
       height: 36px;
       width: 40px;
-      top: 1px;
+      top: 12.5px;
       display: flex;
       justify-content: center;
       align-items: center;
       position: absolute;
-      right: 3%;
+      right: 2.8%;
       font-size: 1.3rem;
       background-color: $button-search-box-background;
       cursor: pointer;
@@ -270,7 +363,6 @@ $user-profile-fonts: "Alte Haas Grotesc";
         color: $button-search-box-color-click;
         border-left-color: $button-search-box-background-border-click;
         border-right-color: $button-search-box-background-border-click;
-
       }
     }
   }
@@ -316,7 +408,7 @@ $user-profile-fonts: "Alte Haas Grotesc";
       }
     }
     .user-error:hover {
-        width: 41.5px;
+      width: 41.5px;
     }
     .user-error {
       @include icon-center();
@@ -378,6 +470,7 @@ $user-profile-fonts: "Alte Haas Grotesc";
 @media (max-width: 1250px) {
   .search-box {
     width: 350px;
+    select,
     input {
       width: 85%;
       padding-block: 0;
@@ -402,13 +495,14 @@ $user-profile-fonts: "Alte Haas Grotesc";
     .search-box {
       justify-content: end;
       width: 200px;
+      select,
       input {
         width: 84%;
         display: none;
       }
       .icon-search {
         height: 34px;
-        top: 0.5px;
+        top: 1px;
         position: relative;
         border: none;
         border-radius: 10px;
@@ -431,18 +525,32 @@ $user-profile-fonts: "Alte Haas Grotesc";
           width: 580px;
           padding-right: 8px;
           margin-right: 13px;
+          margin-left: 3.5%;
           input {
             display: flex;
-            width: 84%;
-            animation: 2.5s cubic-bezier(0.25, 1, 0.3, 1) square-in-center both;
+            width: 97%;
+            animation: 1.2s cubic-bezier(0.25, 1, 0.3, 1) square-in-center both;
+          }
+          .container-countries {
+            width: 83%;
+            margin-left: 11px;
+            transition: width 0.2s ease-in;
+            @media (min-width: 500px) and (max-width: 738px) {
+              margin-left: 16px;
+
+            }
           }
           .icon-search {
-            height: 36.5px;
+            height: 36px;
             position: absolute;
             top: 1px;
-            right: 3%;
+            right: 3.15%;
             border-right: 2px solid $input-search-box-border;
-            margin-right: 0;
+            margin-right: 0.5%;
+            @media (min-width: 500px) and (max-width: 738px) {
+              right: 0;
+              margin-right: 3%;
+            }
           }
         }
       }
@@ -467,6 +575,7 @@ $user-profile-fonts: "Alte Haas Grotesc";
     .search-box {
       width: 150px;
       padding-left: 5%;
+      select,
       input {
         width: 84.6%;
       }
@@ -482,6 +591,7 @@ $user-profile-fonts: "Alte Haas Grotesc";
         justify-content: initial;
 
         .search-box {
+          select,
           input {
             width: 86%;
           }

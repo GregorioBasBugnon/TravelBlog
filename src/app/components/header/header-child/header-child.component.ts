@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { peopleList } from '../../../interfaces/person';
 import { LoadingViewComponent } from '../../loading-view/loading-view.component';
+import { country } from '../../../interfaces/country';
 
 @Component({
   selector: 'app-header-child',
@@ -11,11 +12,16 @@ import { LoadingViewComponent } from '../../loading-view/loading-view.component'
 })
 export class HeaderChildComponent extends LoadingViewComponent {
   @Input() user!: peopleList | undefined;
+  @Input() countrySearch!: country[] | undefined;
   private moonIcon!: HTMLElement;
   private sunIcon!: HTMLElement;
   private headerChild!: HTMLElement;
+  private search!: HTMLInputElement;
+  private countriesSelection!: NodeListOf<HTMLInputElement>;
+  private containerCountries!: HTMLElement;
   private title!: HTMLElement;
   private alert!: HTMLElement;
+  public voidSearch: boolean = false;
 
   ngOnInit(): void {
     this.fixeHeader();
@@ -29,6 +35,7 @@ export class HeaderChildComponent extends LoadingViewComponent {
       this.moonIcon = document.querySelector(".moon") as HTMLElement;
       this.sunIcon = document.querySelector(".sun") as HTMLElement;
       this.headerChild = document.querySelector('.header-child') as HTMLElement;
+      this.containerCountries = document.querySelector(".container-countries") as HTMLElement;
       this.title = document.querySelector('.header-child .title h1') as HTMLElement;
       this.alert = document.querySelector(".alert") as HTMLElement;
     }
@@ -49,6 +56,7 @@ export class HeaderChildComponent extends LoadingViewComponent {
 
   changeSearchComplete() {
     this.headerChild.classList.toggle("search-complete");
+    this.hiddenOptionCountries();
   }
 
   changeSearchInput() {
@@ -84,6 +92,65 @@ export class HeaderChildComponent extends LoadingViewComponent {
       });
     }
   }
+
+  public displayOptionCountries() {
+    this.containerCountries.classList.remove('hidden-element');
+  }
+  public hiddenOptionCountries() {
+    this.containerCountries.classList.add('hidden-element');
+  }
+  public toggleOptionCountries() {
+    this.containerCountries.classList.toggle('hidden-element');
+  }
+
+
+  public searchCountryByName() {
+    this.countriesSelection = document.querySelectorAll(".country-search") as NodeListOf<HTMLInputElement>;
+    this.search = document.querySelector("#search-selection > .search") as HTMLInputElement;
+
+    let searchValue = this.search.value.toLowerCase();
+
+    if (searchValue != "") {
+      this.countriesSelection.forEach((country) => {
+        let itemCountry = country.querySelector("span")?.textContent?.toLowerCase();
+
+        if (itemCountry && itemCountry.includes(searchValue)) {
+          country.classList.remove("hidden-element")
+        } else {
+          country.classList.add("hidden-element")
+        }
+      });
+      this.resizeContainerCountries(Array.from(this.countriesSelection))
+    }
+  }
+
+  public resizeContainerCountries(countriesSelection: any) {
+    let countriesSearching = countriesSelection.filter((selection: { classList: { contains: (arg0: string) => any; }; }) =>
+      !selection.classList.contains('hidden-element'));
+
+    let totalHeightOption = 0;
+    countriesSearching.forEach((heightCountriesSelection: any) => {
+      totalHeightOption += heightCountriesSelection.offsetHeight;
+    });
+
+    this.containerCountries.style.height = totalHeightOption + 'px';
+
+    if (countriesSearching == 0) {
+      this.voidSearch = true;
+    } else {
+      this.voidSearch = false;
+    }
+  }
+
+  public searchCountrySelection(event: any) {
+    this.search = document.querySelector("#search-selection > .search") as HTMLInputElement;
+
+    this.search.value = event.target.textContent;
+    this.hiddenOptionCountries();
+  }
+
+
+
 }
 
 

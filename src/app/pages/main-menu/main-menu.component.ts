@@ -33,6 +33,8 @@ export class MainMenuComponent implements OnInit {
   public personContactResult$!: Observable<peopleList>
   public personProfileResult$!: Observable<peopleList>
   public weatherTodayResult$!: Observable<weather>
+  public countrySingleResult$!: Observable<country[]>
+
   @Output() errorMessage!: string;
 
   constructor(private personService: PersonService, private mediaService: MediaService,
@@ -74,6 +76,13 @@ export class MainMenuComponent implements OnInit {
         this.errorMessage = error;
         return EMPTY;
       })),
+
+      this.countrySingleResult$ =
+      this.countryService.getCountrySingle().pipe(catchError((error: string) => {
+        this.errorMessage = error;
+        return EMPTY;
+      })),
+
 
       this.city = "Madrid";
     this.weatherTodayResult$ = this.weatherService.getWeatherToday(this.city, "current").pipe(catchError((error: string) => {

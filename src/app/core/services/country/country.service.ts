@@ -27,4 +27,8 @@ export class CountryService {
     return this.http.get<country[]>(`${environmentCountries.urlBase}all?fields=
     name,capital,currencies,region,languages,translations,timezones,continents,flags,coatOfArms`);
   }
+
+  getCountrySingle(): Observable<country[]> {
+    return this.http.get<country[]>(`${environmentCountries.urlBase}all?fields=translations,flags,capital`);
+  }
 }

@@ -20,6 +20,7 @@ export class MainDataComponent {
   @Input() photosResult!: Observable<photoList>;
   @Input() countryPopularResult!: Observable<country[]>;
   @Input() photoByCountrieResult!: Observable<photoList>;
+
   countryVoid: country | undefined;
   photoVoid: photo | undefined;
   personVoid: person | undefined;

@@ -18,7 +18,9 @@
   }
 
   @if(personProfileResult | async; as userLogin){
-  <app-header-child [user]="userLogin"></app-header-child>
+  @if(countrySingleResult | async; as countrySearch){
+  <app-header-child [user]="userLogin" [countrySearch]="countrySearch"></app-header-child>
+  }
   }
   @else {
   <app-header-child [user]="personVoid"></app-header-child>

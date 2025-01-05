@@ -35,12 +35,14 @@ export class AlertMessageComponent {
     if (this.alert) {
       this.subscription = timer(1000).subscribe(() => {
         this.alert?.classList.add("active");
+      });
+      this.subscription = timer(300).subscribe(() => {
         this.progress?.classList.add("active");
       });
       this.subscription = timer(8000).subscribe(() => {
         this.alert?.classList.remove("active");
       });
-      this.subscription = timer(8300).subscribe(() => {
+      this.subscription = timer(8150).subscribe(() => {
         this.progress?.classList.remove("active");
         this.alert?.classList.remove("unactive");
       });
@@ -53,7 +55,7 @@ export class AlertMessageComponent {
       this.subscription?.unsubscribe();
       this.progress.classList.remove("active");
 
-      timer(800)
+      timer(200)
         .subscribe(t => {
           this.alert.classList?.remove("active");
         });

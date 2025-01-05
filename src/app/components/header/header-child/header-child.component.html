@@ -8,7 +8,33 @@
       <i class='bx bx-left-arrow-circle' (click)="hideBackArrow()"></i>
     </div>
     <form class="search-box">
-      <input type="text" placeholder="Buscar..." (click)="changeSearchInput()" />
+      <div id="search-selection" (click)="changeSearchInput()" (mouseleave)="hiddenOptionCountries()">
+        @if(!this.loading){
+        <input type="text" class="search" placeholder="Busca tú destino..." (click)="displayOptionCountries()"
+          (mouseenter)="displayOptionCountries()" (input)="searchCountryByName()">
+        } @else {
+        <input type="text" class="search" placeholder="Espere..." readonly>
+        }
+        <div class="container-countries hidden-element" (mouseenter)="displayOptionCountries()"
+          (mouseleave)="hiddenOptionCountries()">
+
+          @for (item of countrySearch; track item.name) {
+          @if (item?.translations?.spa?.common) {
+          <div class="country-search" (click)="searchCountrySelection($event)" (mouseenter)="changeSearchInput()">
+            <img [src]="item.flags.svg" [alt]="item.flags.alt">
+            <span class="text-country"> {{item.translations.spa.common}}</span>
+          </div>
+          }
+          }
+
+          @if (voidSearch) {
+          <div class="country-search">
+            <span class="text-country"> Sin coincidencias...</span>
+          </div>
+          }
+        </div>
+
+      </div>
       <div class="icon-search" (click)="changeSearchComplete()">
         <i class="bx bx-search"></i>
       </div>
