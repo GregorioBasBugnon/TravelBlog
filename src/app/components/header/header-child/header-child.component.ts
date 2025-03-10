@@ -115,9 +115,9 @@ export class HeaderChildComponent extends LoadingViewComponent {
         let itemCountry = country.querySelector("span")?.textContent?.toLowerCase();
 
         if (itemCountry && itemCountry.includes(searchValue)) {
-          country.classList.remove("hidden-element")
+          country.classList.remove("hidden-element");
         } else {
-          country.classList.add("hidden-element")
+          country.classList.add("hidden-element");
         }
       });
       this.resizeContainerCountries(Array.from(this.countriesSelection))
@@ -137,6 +137,9 @@ export class HeaderChildComponent extends LoadingViewComponent {
 
     if (countriesSearching == 0) {
       this.voidSearch = true;
+      const listContainerCountries = Array.from(this.containerCountries.children);
+      listContainerCountries[listContainerCountries.length - 1].classList.remove('hidden-element');
+
     } else {
       this.voidSearch = false;
     }
@@ -148,8 +151,6 @@ export class HeaderChildComponent extends LoadingViewComponent {
     this.search.value = event.target.textContent;
     this.hiddenOptionCountries();
   }
-
-
 
 }
 

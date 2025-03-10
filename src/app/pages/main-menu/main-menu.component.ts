@@ -15,6 +15,7 @@ import { CountryService } from '../../core/services/country/country.service';
 import { WeatherService } from '../../core/services/weather/weather.service';
 import { country } from '../../interfaces/country';
 import { weather } from '../../interfaces/weather';
+import { city } from '../../interfaces/city';
 
 @Component({
   selector: 'app-main-menu',
@@ -34,6 +35,7 @@ export class MainMenuComponent implements OnInit {
   public personProfileResult$!: Observable<peopleList>
   public weatherTodayResult$!: Observable<weather>
   public countrySingleResult$!: Observable<country[]>
+  public cityWantedResult$!: Observable<city[]>
 
   @Output() errorMessage!: string;
 
@@ -83,13 +85,13 @@ export class MainMenuComponent implements OnInit {
         return EMPTY;
       })),
 
-
       this.city = "Madrid";
     this.weatherTodayResult$ = this.weatherService.getWeatherToday(this.city, "current").pipe(catchError((error: string) => {
       this.errorMessage = error;
       return EMPTY;
     }))
   }
+
 }
 
 

@@ -1,8 +1,13 @@
 <aside class="dashboard-content">
-  <h1 style="align-self: flex-start">Tiempo en tú ciudad</h1>
+  <h1 style="align-self: flex-start">Tiempo en su ciudad</h1>
   <div class="containers-weather">
     @if(weatherTodayResult | async; as weather){
+    <!-- @if(cityWantedResult | async; as citySearch){ -->
     <app-city-weather [weather]="weather" [cityName]="cityName"></app-city-weather>
+    <!-- } -->
+    <!-- @else{ -->
+    <!-- <app-city-weather [weather]="weather" [cityName]="cityName"></app-city-weather> -->
+    <!-- } -->
     }
     @else{
     <app-city-weather [weather]="weatherVoid" [cityName]="cityName"></app-city-weather>
@@ -20,7 +25,7 @@
       </ng-container>
       }
       @else {
-        <app-contact [contact]="personVoid"></app-contact>
+      <app-contact [contact]="personVoid"></app-contact>
       }
     </div>
   </div>

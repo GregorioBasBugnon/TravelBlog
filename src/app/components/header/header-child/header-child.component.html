@@ -24,6 +24,10 @@
             <img [src]="item.flags.svg" [alt]="item.flags.alt">
             <span class="text-country"> {{item.translations.spa.common}}</span>
           </div>
+          } @else {
+          <div class="country-search">
+            <span class="text-country"> Sin coincidencias...</span>
+          </div>
           }
           }
 

@@ -7,5 +7,6 @@ import { errorHandlerInterceptor } from './core/interceptors/error-handler.inter
 import { provideClientHydration } from '@angular/platform-browser';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes), provideHttpClient(withInterceptors([errorHandlerInterceptor]), withFetch())]
+  providers: [provideRouter(routes), provideHttpClient(withInterceptors([errorHandlerInterceptor]), withFetch())],
+  withCredentials: true
 }

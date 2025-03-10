@@ -216,15 +216,12 @@ $user-profile-fonts: "Alte Haas Grotesc";
   }
   .search-box {
     position: relative;
-    // display: flex;
     display: inline-block;
     margin-left: 7%;
-    // margin-top: 5.5px;
     z-index: 2;
     top: 1.5px;
 
     #search-selection {
-      // display: contents;
       input {
         width: 83%;
         height: 20px;
@@ -278,7 +275,7 @@ $user-profile-fonts: "Alte Haas Grotesc";
         width: 86.5%;
         overflow: auto;
         border: 1px solid $container-countries-border;
-        padding-right: 2px;
+        padding: 3px 3px 3px 1px;
         z-index: 3;
         margin-top: -9.9px;
         background-color: $country-search-background;
@@ -338,6 +335,8 @@ $user-profile-fonts: "Alte Haas Grotesc";
         }
       }
     }
+
+    // ICON-SEARCH
     .icon-search {
       height: 36px;
       width: 40px;
@@ -537,7 +536,6 @@ $user-profile-fonts: "Alte Haas Grotesc";
             transition: width 0.2s ease-in;
             @media (min-width: 500px) and (max-width: 738px) {
               margin-left: 16px;
-
             }
           }
           .icon-search {

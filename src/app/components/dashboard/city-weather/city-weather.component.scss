@@ -1,8 +1,36 @@
 // Variables
-$city-weather-background: #F4D160;
+$city-weather-background: #f4d160;
 $radient-grade-background: rgb(174, 238, 238);
 $effect-grade-background: rgb(55, 217, 217);
-$sections-weather-font:"Alte Haas Grotesc Bold";
+$form-weather-city-background: #fbeeac;
+$form-weather-city-gradient: #f4d160;
+$form-weather-city-border: #1d5d9b;
+$icon-search-border: #1d5d9b;
+$icon-search-border-hover: black;
+$country-city-search-background: #fbeeac;
+$country-city-search-background-hover: #1d5d9b;
+
+$container-cities-name-border: #1d5d9b;
+$container-cities-name-scroll: #1d5d9b;
+$container-cities-name-scroll-back: white;
+$container-cities-name-scroll-border: #1d5d9b;
+$container-cities-name-scroll-hover: #1d5d9b;
+$search-box-background: white;
+$search-box-border: #1d5d9b;
+$search-box-color-placeholder: black;
+$search-box-color: black;
+$search-box-background-hover: #75c2f6;
+$search-box-color-placeholder-click: #1d5d9b;
+$search-box-color-placeholder-hover:black;
+$search-box-color-placeholder-focus: black;
+$button-search-box-background: #1d5d9b;
+$button-search-box-color: white;
+$button-search-box-background-hover: #75c2f6;
+$button-search-box-color-click: black;
+$button-search-box-background-border-click: #1d5d9b;
+$sections-weather-font: "Alte Haas Grotesc Bold";
+$selection-weather-font: "Alte Haas Grotesc Bold";
+$selection-imput-weather-font: "Alte Haas Grotesc Bold";
 
 @mixin alte-haas-grotesc-bold {
   @font-face {
@@ -10,7 +38,206 @@ $sections-weather-font:"Alte Haas Grotesc Bold";
     src: url("../../../../assets/fonts/Alte_Haas_Grotesk/AlteHaasGroteskBold.ttf");
   }
 }
+@mixin alte-haas-grotesc {
+  @font-face {
+    font-family: "Alte Haas Grotesc";
+    src: url("../../../../assets/fonts/Alte_Haas_Grotesk/AlteHaasGroteskRegular.ttf");
+  }
+}
+@include alte-haas-grotesc();
 @include alte-haas-grotesc-bold();
+
+// HIDEEN
+.hidden-searching {
+  display: none;
+}
+
+// SEARCH
+.form-weather-city {
+  display: flex;
+  align-items: center;
+  margin-left: 2%;
+
+  .item-form-weather {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    // background-color: $form-weather-city-background;
+    background: linear-gradient(
+      0deg,
+      $form-weather-city-gradient 0%,
+      $form-weather-city-background 77%
+    );
+
+    border-radius: 30px;
+    padding: 20px 25px 14px 25px;
+    width: 58%;
+    margin-bottom: -1px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-top: 2px solid $form-weather-city-border;
+    border-left: 2px solid $form-weather-city-border;
+    border-right: 2px solid $form-weather-city-border;
+
+    span {
+      font-family: $selection-weather-font;
+      padding-bottom: 3px;
+    }
+    .search-box {
+      position: relative;
+      display: inline-block;
+      margin-left: -10%;
+      z-index: 2;
+      top: 1.5px;
+      #search-city-selection {
+        input {
+          font-family: $selection-imput-weather-font;
+          width: 190px;
+          height: 20px;
+          border: 1px solid $search-box-border;
+          border-radius: 12px;
+          font-size: 1rem;
+          font-weight: 500;
+          letter-spacing: 0.6px;
+          padding: 8px 11% 8px 6.5%;
+          margin: auto;
+          background-color: $search-box-background;
+          cursor: pointer;
+          overflow: hidden;
+          text-overflow: ellipsis;
+
+          &::placeholder {
+            opacity: 0.5;
+            font-weight: 400;
+            color: $search-box-color-placeholder;
+          }
+          &:not(:focus) {
+            color: $search-box-color;
+          }
+          &:hover {
+            background-color: $search-box-background-hover;
+            color: $search-box-color-placeholder-click;
+
+            &::placeholder {
+              opacity: 0.8;
+              color: $search-box-color-placeholder-click;
+              font-family: $selection-weather-font;
+            }
+          }
+
+          &:focus {
+            color: $search-box-color-placeholder-hover;
+            opacity: 1;
+
+            &::placeholder {
+              opacity: 1;
+              font-weight: 500;
+              color: $search-box-color-placeholder-focus;
+            }
+          }
+        }
+
+        /*SCROLLBAR*/
+        .container-cities-name {
+          transition: height 0.3s ease-in;
+          min-height: 37px;
+          max-height: 310px;
+          width: 86.5%;
+          overflow: auto;
+          border: 1px solid $container-cities-name-border;
+          padding: 3px 3px 3px 1px;
+          z-index: 3;
+          margin-top: -0.3px;
+          margin-left: 8px;
+          background-color: $country-city-search-background;
+          box-sizing: content-box;
+          position: absolute;
+
+          @media (min-width: 738px) and (max-width: 1250px) {
+            max-height: 300px;
+          }
+          @media (max-width: 738px) {
+            max-height: 200px;
+          }
+
+          &::-webkit-scrollbar {
+            width: 13px; /* Ancho de la barra vertical */
+            height: 5px;
+            background-color: $container-cities-name-scroll-back;
+            border-left: 1px solid $container-cities-name-scroll-border;
+          }
+
+          &::-webkit-scrollbar-thumb {
+            background-color: $container-cities-name-scroll;
+            border-radius: 8px;
+          }
+
+          &::-webkit-scrollbar-thumb:hover {
+            background-color: $container-cities-name-scroll-hover; /* Color al pasar el mouse */
+          }
+
+          @media (max-width: 736px) {
+            margin-top: 0.5px;
+          }
+          .country-city-search {
+            margin-left: 1px;
+            padding: 3px 10px 3px 13px;
+            &:not(.hidden-searching) {
+              display: flex;
+              align-items: center;
+              justify-content: start;
+              cursor: pointer;
+            }
+
+            &:hover {
+              background-color: $country-city-search-background-hover;
+            }
+            img {
+              width: 27px;
+              height: 17px;
+            }
+            span {
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              padding-left: 10px;
+              line-height: 29px;
+            }
+          }
+        }
+      }
+
+      // ICON-SEARCH
+      .icon-search {
+        height: 36px;
+        width: 40px;
+        top: 1px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        right: -17.5%;
+        font-size: 1.3rem;
+        background-color: $button-search-box-background;
+        cursor: pointer;
+        border-left: 3.5px solid $icon-search-border;
+        border-right: 2px solid $icon-search-border;
+        box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+        border-radius: 10px;
+        border-top-left-radius: 7px;
+        border-bottom-left-radius: 7px;
+        color: $button-search-box-color;
+      }
+      .icon-search:not(.disabled):hover {
+        background-color: $button-search-box-background-hover;
+        color: $button-search-box-color-click;
+        border-left-color: $button-search-box-background-border-click;
+        border-right-color: $button-search-box-background-border-click;
+      }
+    }
+  }
+}
 
 // Active Weather
 .active-weather {
@@ -19,9 +246,13 @@ $sections-weather-font:"Alte Haas Grotesc Bold";
   align-items: center;
   background-color: $city-weather-background;
   padding: 0 10px;
-  margin: 15px 10px 0;
-  border-radius: 15px;
+  margin: 0.08% 2% 0;
+  border-radius: 0 15px 15px 15px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 3px;
+  position: relative;
+  z-index: 1;
+  border-left: 2px solid $form-weather-city-border;
+
 
   h1 {
     margin-top: 10px;
@@ -33,9 +264,9 @@ $sections-weather-font:"Alte Haas Grotesc Bold";
     flex-direction: row;
     align-items: center;
     gap: 33px;
-    padding: 23px;
+    padding: 12px 23px 23px 23px;
 
-    &.uknow-weather {
+    &.unknown-weather {
       display: inherit;
       flex-direction: inherit;
       align-items: normal;
@@ -43,7 +274,7 @@ $sections-weather-font:"Alte Haas Grotesc Bold";
       padding-top: 0px;
 
       .box {
-        .uknow-weather-text {
+        .unknown-weather-text {
           margin-top: 7px;
           p {
             margin-bottom: 6px;
@@ -75,7 +306,7 @@ $sections-weather-font:"Alte Haas Grotesc Bold";
           }
         }
       }
-      .uknow-weather-content {
+      .unknown-weather-content {
         display: flex;
         justify-content: center;
         align-items: start;
@@ -111,7 +342,7 @@ $sections-weather-font:"Alte Haas Grotesc Bold";
         text-decoration: underline;
         text-decoration-color: $city-weather-background;
         text-decoration-thickness: 1.5px;
-        span{
+        span {
           text-decoration: underline;
           text-decoration-color: $city-weather-background;
           text-decoration-thickness: 1.5px;

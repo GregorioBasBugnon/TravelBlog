@@ -5,10 +5,9 @@ import { Observable } from 'rxjs';
 import { weather } from '../../../interfaces/weather';
 import { city } from '../../../interfaces/city';
 
-const citySearch = 'bue';
 
 function createDash(city: string) {
-  return city = city.replace(/\s/g, '-');
+  city = city.replace(/(?<=\b\w+)\s(?=\w+\b)/g, '-');
 }
 
 @Injectable({
@@ -22,8 +21,8 @@ export class WeatherService {
     return this.http.get<any>(`${environmentWeather.urlBase}point?place_id=${createDash(cityName)}&sections=${timetable}&timezone=UTC&language=en&units=metric&key=${environmentWeather.key}`);
   }
 
-  getCity(): Observable<city> {
-    return this.http.get<city>(`${environmentWeather.urlBase}find_places_prefix?text=${createDash(citySearch)}&key=${environmentWeather.key}`);
+  getCityWanted(citySearch: string): Observable<city[]> {
+    return this.http.get<city[]>(`${environmentWeather.urlBase}find_places_prefix?text=${createDash(citySearch)}&key=${environmentWeather.key}`);
   }
 }
 

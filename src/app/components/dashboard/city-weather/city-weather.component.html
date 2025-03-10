@@ -1,5 +1,42 @@
+@if (weather != undefined) {
+<div class="form-weather-city">
+  <div class="item-form-weather">
+    <span class="form-weather-text">El tiempo de la ciudad de: </span>
+    <!-- <input class="form-weather-input" type="text" placeholder="Madrid"> -->
+    <form class="search-box">
+      <div id="search-city-selection" (mouseleave)="hiddenOptionCountries()">
+        @if(!this.loading){
+        <input type="text" class="search" placeholder="Madrid" (click)="displayOptionCountries()"
+          (mouseenter)="displayOptionCountries()" (input)="cityToSearch($event)">
+        } @else {
+        <input type="text" class="form-weather-input" placeholder="Espere..." readonly>
+        }
+        <div class="container-cities-name hidden-searching" (mouseenter)="displayOptionCountries()"
+          (mouseleave)="hiddenOptionCountries()">
+
+          @for (item of cityWanted; track item.name) {
+          @if (item?.name) {
+          <div class="country-city-search" (click)="searchCountrySelection($event)">
+            <span class="text-country"> {{item?.name}}</span>
+          </div>
+          }
+          }
+
+          @if (voidSearch) {
+          <div class="country-city-search">
+            <span class="text-country"> Sin coincidencias...</span>
+          </div>
+          }
+        </div>
+
+      </div>
+      <div class="icon-search">
+        <i class="bx bx-search"(click)="weatherCityToSearch()"></i>
+      </div>
+    </form>
+  </div>
+</div>
 <div class="active-weather">
-  @if (weather != undefined) {
   <div class="active-weather-container">
     <div class="box">
       <div class="gradient-trapeze"></div>
@@ -14,15 +51,30 @@
       <p><span>Cantidad de nubes:</span> {{weather.current.cloud_cover}}%</p>
     </div>
   </div>
-  } @else {
-  <div class="active-weather-container uknow-weather">
+</div>
+} @else {
+<div class="form-weather-city">
+  <div class="item-form-weather">
+    <form class="search-box">
+      <div id="search-city-selection">
+        <input type="text" class="form-weather-input" placeholder="Madrid..." readonly disabled>
+      </div>
+      <div class="icon-search disabled">
+        <i class="bx bx-search"></i>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="active-weather">
+  <div class="active-weather-container unknown-weather">
     <div class="box">
-      <div class="uknow-weather-text">
+      <div class="unknown-weather-text">
         <p>Tiempo desconocido en la ciudad </p>
         <p class="city-name-title">{{cityName}}</p>
       </div>
     </div>
-    <div class="uknow-weather-content">
+    <div class="unknown-weather-content">
       <img src="assets/image/weather/error-weather.png" alt="imagen de tiempo de error" id="img-weather">
       <div class="weather-content">
         <p><span>Tiempo:</span> -</p>
@@ -32,5 +84,5 @@
       </div>
     </div>
   </div>
-  }
 </div>
+}

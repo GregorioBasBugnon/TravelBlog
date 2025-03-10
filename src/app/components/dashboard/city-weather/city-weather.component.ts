@@ -1,19 +1,44 @@
-import { Component, Input } from '@angular/core';
 import { weather } from '../../../interfaces/weather';
-import { AsyncPipe } from '@angular/common';
+import { LoadingViewComponent } from '../../loading-view/loading-view.component';
+import { city } from '../../../interfaces/city';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { WeatherService } from '../../../core/services/weather/weather.service';
 
 @Component({
   selector: 'app-city-weather',
   standalone: true,
-  imports: [AsyncPipe],
   templateUrl: './city-weather.component.html',
-  styleUrl: './city-weather.component.scss'
+  styleUrl: './city-weather.component.scss',
+  imports: [LoadingViewComponent]
 })
-export class CityWeatherComponent {
-  @Input() weather!: weather | undefined;;
+export class CityWeatherComponent extends LoadingViewComponent implements OnInit {
+
+  @Input() weather!: weather | undefined;
   @Input() cityName!: string;
-  weatherSpanish = "";
-  imgWeather = "";
+  // @Output() cityWritted = new EventEmitter<string>();
+  private searchWeatherCity!: HTMLInputElement;
+  private containerCities!: HTMLElement;
+
+  public voidSearch: boolean = false;
+  public weatherSpanish = "";
+  public imgWeather = "";
+  public cityWanted: city[] | undefined;
+
+  constructor(private weatherService: WeatherService) {
+    super();
+  }
+
+  ngOnInit(): void {
+    this.initializeHeaderElements();
+    this.loadView(this.cityName);
+  }
+
+  private initializeHeaderElements(): void {
+    if (typeof window !== 'undefined') {
+      this.containerCities = document.querySelector(".container-cities-name") as HTMLElement;
+      this.searchWeatherCity = document.querySelector("#search-city-selection > .search") as HTMLInputElement;
+    }
+  }
 
   ngAfterViewInit(): void {
     Promise.resolve().then(() => {
@@ -136,5 +161,116 @@ export class CityWeatherComponent {
       }
 
     });
+  }
+
+  public displayOptionCountries() {
+    this.initializeHeaderElements();
+    if (this.searchWeatherCity && this.searchWeatherCity.value != "") {
+      this.containerCities.classList.remove('hidden-searching');
+    }
+  }
+  public hiddenOptionCountries() {
+    this.initializeHeaderElements();
+    this.containerCities.classList.add('hidden-searching');
+  }
+  public toggleOptionCountries() {
+    this.containerCities.classList.toggle('hidden-searching');
+  }
+
+
+  // public searchCountryByName() {
+  //   this.countriesSelection = document.querySelectorAll(".country-city-search") as NodeListOf<HTMLInputElement>;
+  //   this.initializeHeaderElements();
+
+  //   let searchValue = this.searchWeatherCity.value.toLowerCase();
+
+  //   if (searchValue != "") {
+  //     this.countriesSelection.forEach((country) => {
+  //       let itemCountry = country.querySelector("span")?.textContent?.toLowerCase();
+
+  //       if (itemCountry && itemCountry.includes(searchValue)) {
+  //         country.classList.remove("hidden-searching")
+  //       } else {
+  //         country.classList.add("hidden-searching")
+  //       }
+  //     });
+  //     this.resizeContainerCountries(Array.from(this.countriesSelection))
+  //   }
+  // }
+
+  public resizeContainerCountries(countriesSelection: any) {
+    // let countriesSearching = countriesSelection.filter((selection: { classList: { contains: (arg0: string) => any; }; }) =>
+    //   !selection.classList.contains('hidden-searching'));
+
+    // let totalHeightOption = 0;
+    // countriesSearching.forEach((heightCountriesSelection: any) => {
+    //   totalHeightOption += heightCountriesSelection.offsetHeight;
+    // });
+
+    // this.containerCities.style.height = totalHeightOption + 'px';
+
+    if (countriesSelection == 0) {
+      this.voidSearch = true;
+      const childrenArray = Array.from(this.containerCities.children);
+      childrenArray[childrenArray.length - 1].classList.remove('hidden-searching');
+
+    } else {
+      this.voidSearch = false;
+    }
+  }
+
+  public searchCountrySelection(event: any) {
+
+    this.searchWeatherCity.value = event.currentTarget.textContent;
+    this.hiddenOptionCountries();
+  }
+
+  public cityToSearch(event: Event) {
+    this.initializeHeaderElements();
+    this.displayOptionCountries();
+    try {
+
+      this.weatherService.getCityWanted(this.getCityName(event)).subscribe({
+        next: (response) => {
+          this.cityWanted = response;
+        },
+        complete: () => {
+          // this.searchCountryByName();
+          this.resizeContainerCountries(this.cityWanted)
+        }
+      });
+
+    } catch (error) {
+      throw new Error(`Error processing city search: ${error}`);
+    }
+
+  }
+  public async weatherCityToSearch(): Promise<void> {
+    if (this.searchWeatherCity.value && this.searchWeatherCity.value != "") {
+      try {
+        this.weatherService.getWeatherToday(this.searchWeatherCity.value, "current").subscribe({
+          next: (response) => {
+            this.weather = response;
+            console.log(this.weather);
+
+          },
+          error: (err) => {
+            this.weather == undefined;
+          },
+          complete: () => {
+            this.searchWeatherCity.textContent = "";
+          }
+        });
+      } catch (error) {
+        throw new Error(`Error processing weather of city search: ${error}`);
+      }
+    }
+  }
+
+  public getCityName(event: Event) {
+    let citySearch = event.target as HTMLInputElement;
+    let cityName = citySearch.value;
+
+    return cityName;
   }
 }
